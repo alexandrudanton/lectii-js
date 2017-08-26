@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #container {
+            font-size: 24px;
+            padding: 10px;
+        }
+    </style>
+    <div id="container"></div>
+    <script>
+        function show(message) {
+            document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + '<br>' + message;
+        }
+
+        function isPrime(n)
+        {
+            if (n <= 1) {
+                return false;
+            }
+
+            if (n == 2 || n == 3) {
+                return true;
+            }
+
+            var halfN = Math.floor(n / 2);
+            for (var i = 2; i <= halfN; i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        for (var i = 2; i <= 100; i++) {
+            if (isPrime(i)) {
+                show(i);
+            }
+        }
+    </script>
+</body>
+
+</html>

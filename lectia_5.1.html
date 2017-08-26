@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #container {
+            font-size: 24px;
+            padding: 10px;
+        }
+    </style>
+    <div id="container"></div>
+    <script>
+        function show(message)
+        {
+            document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + '<br>' + message;
+        }
+
+        // 9 - 10 -> A
+        // 8 - 9 -> B
+        // 7 - 8 -> C
+        // 6 - 7 -> D
+        // 5 - 6 -> E
+        // 1 - 5 -> F
+        function getUSGrade(grade)
+        {
+            if (isNaN(grade)) {
+                return 'is not a number';
+            }
+
+            if (grade > 10 || grade < 1) {
+                return 'Valori intre 1 si 10, bah!';
+            }
+
+            if (grade >= 9) {
+                return 'A';
+            } else if (grade >= 8) {
+                return 'B';
+            } else if (grade >= 7) {
+                return 'C';
+            } else if (grade >= 6) {
+                return 'D';
+            } else if (grade >= 5) {
+                return 'E';
+            } else {
+                return 'F';
+            }
+        }
+
+        var grade = 'bla';
+        show(getUSGrade(grade));
+    </script>
+</body>
+</html>

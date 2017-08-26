@@ -1,0 +1,204 @@
+<style>
+    /*
+        div-ul are valoare standard a proprietatii display egala cu block;
+        asta inseamna ca se intinde pe toata latimea parintelui;
+        in cazul nostru, latimea body-ului.
+
+        display: inline-block; -> modifica latimea div-ului si acesta se intinde
+        cat ii este plapuma :-P ... adica exact cat este continutul lui.
+    */
+    .chess-board {
+        display: inline-block;
+    }
+
+    /*
+        display: flex; este o proprietate noua din CSS3 si inlocuieste destul de
+        elegant "float: left;"-uri si "clear: right;"-uri care de obicei dau dureri de cap
+        celor care incearca sa le foloseasca :-))
+
+        .chess-board > div selecteaza primul nivel de div-uri din div-ul cu clasa .chess-board
+        (div-urile pe care le folosim pentru "linii")
+    */
+    .chess-board > div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /*
+        .chess-board > div > div selecteaza al doilea nivel de div-uri, si anume "celulele"
+    */
+    .chess-board > div > div,
+    .chess-board > div:not(:last-child) > div:first-child:after, /* dimensiunea boxurilor cu numere */
+    .chess-board > div:last-child > div:not(:first-child):after /* dimensiunea boxurilor cu litere */ {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    /*
+        pentru toate "celulele" care nu sunt in prima coloana si care nu sunt pe ultima linie
+        setam un border interior folosind box-shadow inset.
+
+        daca am fi folosit border: 1px solid #000, dimensiunea finala a celulelor ar fi fost:
+            width = 50px + 1px + 1px si
+            height = 50px + 1px + 1px.
+
+        o alternativa ar fi fost folosirea box-sizing: border-box;
+    */
+    .chess-board > div:not(:last-child) > div:not(:first-child) {
+        box-shadow: 0px 0px 0px 1px #000 inset;
+    }
+
+    /*
+        selectam pe rand celulele pare din liniile pare (:nth-child(2n))
+        si celulele impare din liniile impare (:nth-child(2n+1)),
+        mai putin cele din prima coloana (div:not(:first-child)) si
+        cele din ultima linie (div:not(:last-child)) si setam pentru ele background-ul negru
+    */
+    .chess-board > div:not(:last-child):nth-child(2n) > div:not(:first-child):nth-child(2n),
+    .chess-board > div:not(:last-child):nth-child(2n+1) > div:not(:first-child):nth-child(2n+1) {
+        background: #000;
+    }
+
+    /*
+        pentru celulele din prima coloana (fara cea din ultima linie) si
+        pentru celulele din ultima linie (fara cea din prima coloana) setam stilul
+        pentru numere si litere
+    */
+    .chess-board > div:not(:last-child) > div:first-child:after,
+    .chess-board > div:last-child > div:not(:first-child):after {
+        font-weight: bold;
+        text-align: center;
+        font-family: Arial;
+        font-size: 16px;
+    }
+
+    /*
+        numerotam automat folosind CSS ... cool, right? :-D
+    */
+    .chess-board {
+        counter-reset: numbers 9;
+    }
+
+    .chess-board > div:not(:last-child) > div:first-child:after {
+        counter-increment: numbers -1;
+        content: counter(numbers);
+        display: block;
+    }
+    /* end numerotare */
+
+    /*
+        numerotam automat cu litere ... how cool is that?!?!? :-)))
+    */
+    .chess-board > div:last-child {
+        counter-reset: letters;
+    }
+
+    .chess-board > div:last-child > div:not(:first-child):after {
+        counter-increment: letters;
+        content: counter(letters, upper-alpha);
+        display: block;
+    }
+    /* end numerotare cu litere */
+</style>
+<div class="chess-board">
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>

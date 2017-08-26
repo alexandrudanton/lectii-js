@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #container {
+            font-size: 24px;
+            padding: 10px;
+        }
+    </style>
+    <div id="container"></div>
+    <script>
+        function show(message)
+        {
+            document.getElementById('container').innerHTML = document.getElementById('container').innerHTML + '<br>' + message;
+        }
+
+        function factorial(n)
+        {
+            if (n < 0) {
+                return '"No se puede" Madalina';
+            }
+
+            if (n == 0 || n == 1) {
+                return 1;
+            }
+
+            var fact = 1;
+            for (var i = 2; i <= n; i++) {
+                fact = fact * i;
+            }
+
+            return fact;
+        }
+
+        var number = 5;
+        show(factorial(number));
+
+    </script>
+</body>
+
+</html>

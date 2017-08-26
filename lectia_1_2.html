@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/javascript">
+        function createMessage(duration, firmName)
+        {
+            var msg = 'Eu sunt angajat de ' + duration + ' ' + (duration > 1 ? 'ani' : 'an') + ' in ' + firmName + '!';
+
+            return msg;
+        }
+
+        function showMessage(message)
+        {
+            // console.log(message);
+            document.getElementById('container').innerHTML =
+                document.getElementById('container').innerHTML + '<br>' + message;
+        }
+
+        var firstName = 'Alex';
+        var lastName = 'Anton';
+        showMessage(firstName);
+        showMessage(lastName);
+        showMessage(firstName + ' ' + lastName);
+        console.log(firstName, lastName, 'abc', 123);
+
+        var city = 'Brasov';
+        showMessage('Numele meu este ' + firstName + ' ' + lastName + ' si sunt din ' + city + '!');
+
+        var firm = 'Projects Abroad';
+        var duration = 6;
+        showMessage('Eu sunt angajat de ' + duration + ' ani in ' + firm + '!');
+
+        showMessage('Eu sunt angajat de ' + duration + ' ' + (duration > 1 ? 'ani' : 'an') + ' in ' + firm + '!');
+
+        var message = createMessage(duration, firm);
+
+        showMessage(message);
+
+        duration++;
+        message = createMessage(duration, firm);
+        showMessage(message);
+
+        showMessage('John Doe'.length);
+        showMessage(message.length);
+        showMessage('John Doe'.replace('John', 'Jane'));
+        showMessage(message.replace('sunt angajat', 'lucrez'));
+        showMessage(message.replace(duration, duration / 2));
+
+        showMessage('John Snow'.substr(0, 3));
+        showMessage('John Snow'.substring(1, 3));
+
+        showMessage(message.substr(10, 5));
+
+        showMessage(firm.toUpperCase());
+
+        showMessage('>' + '&nbsp;&nbsp;&nbsp;&nbsp;abc&nbsp;&nbsp;&nbsp;' + '<');
+        showMessage('>' + '    abc   '.trim() + '<');
+
+        var phrase = 'Lorem ipsum dolor sit amet consectetur adipiscing elit';
+
+        showMessage(phrase.indexOf('Lorem ipsum'));
+        showMessage('John Doe'.indexOf('o', 5));
+
+        var posFirstSpace = phrase.indexOf(' ');
+        showMessage(phrase.substring(0, posFirstSpace));
+
+        var posSecondSpace = phrase.indexOf(' ', posFirstSpace + 1);
+        var secondWord = phrase.substring(posFirstSpace + 1, posSecondSpace);
+        showMessage('>' + secondWord + '<');
+
+    </script>
+</body>
+</html>
