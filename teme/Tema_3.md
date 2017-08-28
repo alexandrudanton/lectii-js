@@ -45,5 +45,5 @@ Scrieti un script care sa afiseze folosind instructiunea for numerele de la 1 la
 > Fizz<br>
 > 13<br>
 > 14<br>
-> FizzBuz<br>z
+> FizzBuzz<br>
 > s.a.m.d pana la 100 (mai exact pana la Buzz :-P)
