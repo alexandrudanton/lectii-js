@@ -30,20 +30,20 @@ Scrieti un script care sa afiseze folosind instructiunea for numerele de la 1 la
 2. Daca numarul **este divizibil cu 5** afisati `Buzz`
 3. Daca numarul **este divizibil si cu 3 si cu 5** afisati `FizzBuzz`
 
-> Exemplu:
-> 1
-> 2
-> Fizz
-> 4
-> Buzz
-> Fizz
-> 7
-> 8
-> Fizz
-> Buzz
-> 11
-> Fizz
-> 13
-> 14
-> FizzBuzz
+> Exemplu:<br>
+> 1<br>
+> 2<br>
+> Fizz<br>
+> 4<br>
+> Buzz<br>
+> Fizz<br>
+> 7<br>
+> 8<br>
+> Fizz<br>
+> Buzz<br>
+> 11<br>
+> Fizz<br>
+> 13<br>
+> 14<br>
+> FizzBuz<br>z
 > s.a.m.d pana la 100 (mai exact pana la Buzz :-P)
