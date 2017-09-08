@@ -47,7 +47,6 @@
 10. Scrieti o functie care sa trunchieze o phrase la un anumit numar de cuvinte.
 > truncate('The quick brown fox jumps over the lazy dog', 4) ---> 'The quick brown fox'
 
-<br>
 ## 2. Structuri conditionale si repetitive
 
 1. Scrieti un script care sa aiba 3 variabile, fiecare continand un numar intreg (pozitiv sau negativ). Afisati semnul inmultirii celor 3 numere.
