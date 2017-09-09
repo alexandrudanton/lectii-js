@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        * {
+            font-family: Arial;
+            font-size: 24px;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        .highlight {
+            background: #32F732;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Declarati si initializati o variabila care sa contina o fraza (fara semne de punctuatie).<br>
+        Scrieti un script care sa afiseze pe rand fiecare cuvant din fraza.
+    </p>
+    <div id="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function getNumberOfSpaces(phrase)
+        {
+            var phraseWithoutSpaces = phrase.replace(/ /g, '');
+
+            return phrase.length - phraseWithoutSpaces.length
+        }
+
+        var phrase = ' Lorem ipsum a dolor sit amet b ';
+
+        // scoatem spatiile in plus de la inceputul si de la sfarsitul string-ului
+        phrase = phrase.trim();
+
+        var noOfSpaces = getNumberOfSpaces(phrase);
+        var prevSpacePos = 0;
+        var nextSpacePos = 0;
+        var word;
+
+        show(phrase + '<br>');
+        /*
+            Pentru a afisa toate cuvintele dintr-o fraza avem nevoie de un for
+            care sa aiba un numar de iteratii egal cu numarul de spatii din fraza.
+            In interiorul for-ului vom incerca sa selectam pe rand cate un cuvant
+            aflat intre prevSpacePos si nextSpacePos. Pentru ca for-ul merge de la
+            0 la noOfSpaces - 1 (datorita comparatorului "<") nu vom reusi sa
+            afisam si ultimul cuvant. Pentru asta il vom afisa noi imediat dupa ce
+            iesim din for.
+        */
+        for (var i = 0; i < noOfSpaces; i++) {
+            /*
+                variabila nextSpacePos primeste pozitia urmatorului spatiu cautata
+                dupa pozitia prevSpacePos
+            */
+            nextSpacePos = phrase.indexOf(' ', prevSpacePos + 1);
+            word = phrase.substring(prevSpacePos, nextSpacePos);
+            show(word);
+            /*
+                variabila prevSpacePos primeste ca noua valoare pozitia imediat
+                urmatoare a nextSpacePos
+            */
+            prevSpacePos = nextSpacePos + 1;
+        }
+
+        /*
+            in acest moment variabila prevSpacePos contine pozitia imediat urmatoare
+            de dupa ultimul spatiu. Folosind functia substring() extragem ultimul
+            cuvant din fraza
+        */
+        show(phrase.substring(prevSpacePos));
+    </script>
+</body>
+</html>

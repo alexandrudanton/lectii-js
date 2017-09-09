@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        * {
+            font-family: Arial;
+            font-size: 24px;
+        }
+
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>Scrieti un script care sa calculeze suma numerelor de la 1 la 10 ridicate fiecare la puterea reprezentata de numarul in sine.</p>
+    <div id="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function sumOfPows()
+        {
+            var sum = 0;
+
+            for (var i = 1; i <= 10; i++) {
+                sum = sum + i ** i;
+            }
+
+            show(sum);
+        }
+
+        sumOfPows();
+    </script>
+</body>
+</html>

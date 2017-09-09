@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        * {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 24px;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        .highlight {
+            background: #32F732;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Declarati si initializati o variabila de tip string care sa contina 50 de cifre aleatoare.<br>
+        Scrieti un script care sa calculeze produsul maxim a 4 cifre consecutive.
+    </p>
+    <div id="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        /*
+            functia getProduct4Digits returneaza produsul a 4 cifre consecutive
+            incepand cu pozitia posFirstDigit
+        */
+        function getProduct4Digits(digits, posFirstDigit)
+        {
+            return digits[posFirstDigit] * digits[posFirstDigit + 1] * digits[posFirstDigit + 2] * digits[posFirstDigit + 3];
+        }
+
+        /*
+            functia highlightAllOccurrences marcheaza in textul nostru toate aparitiile
+            celor 4 cifre consecutive care au produsul maxim
+        */
+        function highlightAllOccurrences(digits, index)
+        {
+            /*
+                construim sirul de 4 cifre consecutive pentru a putea sa il inlocuim
+                cu el insusi in interiorul tagului <span>
+            */
+            var slice = digits[index] + digits[index + 1] + digits[index + 2] + digits[index + 3];
+            var highlightedSlice = '<span class="highlight">' + slice + '</span>';
+
+            /*
+                Pentru a inlocui toate aparitiile sirului folosim functia replace cu
+                regular expression.
+            */
+            var re = new RegExp(slice, 'g');
+            return digits.replace(re, highlightedSlice);
+        }
+
+        var text = '23847023894709578023874238743928709578043928758465437340957867';
+        /*
+            In variabila index vom pune pozitia de inceput a celor 4 cifre consecutive
+            care au produsul maxim
+        */
+        var index = 0;
+        var produs;
+
+        var lastPosition = text.length - 3;
+        /*
+            Variabila maxProd, in care vom pune la fiecare iteratie valoare maxima a
+            produsului celor 4 cifre consecutive, o initializam cu produsul primelor
+            4 cifre din textul nostru. Drept urmare vom incepe iteratiile de la pozitia 1
+            pentru a nu mai verifica produsul primelor 4 cifre din text.
+        */
+        var maxProd = getProduct4Digits(text, 0);
+        for (var i = 1; i < lastPosition; i++) {
+            produs = getProduct4Digits(text, i);
+
+            if (maxProd < produs) {
+                maxProd = produs;
+                index = i;
+            }
+        }
+
+        show('Textul initial: ' + text + '<br>');
+        show('Produsul maxim: ' + text[index] + ' * ' + text[index + 1] + ' * ' + text[index + 2] + ' * ' + text[index + 3] + ' = ' + maxProd + '<br>');
+
+        text = highlightAllOccurrences(text, index);
+        show('Textul highlight-uit: ' + text);
+    </script>
+</body>
+</html>
