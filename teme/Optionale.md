@@ -12,36 +12,36 @@
 > 'AaBbc' ---> 'aAbBC'
 
 4. Scrieti un script care sa converteasca un string in camelcase.
-> 'JavaScript Exercises' ---> 'JavaScriptExercises'
-> 'JavaScript exercises' ---> 'JavaScriptExercises'
+> 'JavaScript Exercises' ---> 'JavaScriptExercises'<br>
+> 'JavaScript exercises' ---> 'JavaScriptExercises'<br>
 > 'JavaScriptExercises' ---> 'JavaScriptExercises'
 
 5. Scrieti o functie care sa transforme un string din camel case in text normal. Optional, se poate trimite in functie un al doilea parametru care sa specifice caracterul care va delimita cuvintele.
-> uncamelize('helloWorld') ---> 'hello world'
-> uncamelize('helloWorld', '-') ---> 'hello-world'
+> uncamelize('helloWorld') ---> 'hello world'<br>
+> uncamelize('helloWorld', '-') ---> 'hello-world'<br>
 > uncamelize('helloWorld', '#') ---> 'hello#world'
 
 6. Scrieti o functie care concateneaza un string de n ori. Folositi `for` si concatenare de string-uri.
-> repeat('Ha!') ---> 'Ha!'
-> repeat('Ha!', 2) ---> 'Ha!Ha!'
+> repeat('Ha!') ---> 'Ha!'<br>
+> repeat('Ha!', 2) ---> 'Ha!Ha!'<br>
 > repeat('Ha!', 3) ---> 'Ha!Ha!Ha!'
 
 7. Scrieti o functie care sa adauge sufixul corect la un numar transmis ca parametru. Numarul transmis ca parametru se va valida pentru a nu fi <= 0. In cazul in care numarul nu este valid se afiseaza un mesaj. Pentru a citi numarul pe care il transmiteti functiei folositi `prompt(message)`.
-> 1st
-> 2nd
-> 3rd
-> 4th
-> ...
-> 8th
-> ...
+> 1st<br>
+> 2nd<br>
+> 3rd<br>
+> 4th<br>
+> ...<br>
+> 8th<br>
+> ...<br>
 > 301st
 
 8. Scrieti o functie care sa imparta un string in substring-uri de dimensiune data. Functia va avea 2 parametrii: string-ul si dimensiunea substring-urilor.
-> string_chop('Javascript', 1) ---> 'J', 'a', 'v', 'a', 's', 'c', 'r', 'i', 'p', 't'
+> string_chop('Javascript', 1) ---> 'J', 'a', 'v', 'a', 's', 'c', 'r', 'i', 'p', 't'<br>
 > string_chop('Javascript', 3) ---> 'Jav', 'asc', 'rip', 't'
 
 9. Scrieti o functie care sa numere de cate ori apare un cuvant intr-o fraza. Cautarea cuvantului sa nu fie case-sensitive. Incercati o varianta fara si una cu regular expressions :-)
-> count('The quick brown fox jumps over the lazy dog', 'the') ---> 2
+> count('The quick brown fox jumps over the lazy dog', 'the') ---> 2<br>
 > count('The quick brown fox jumps over the lazy dog', 'fox') ---> 1
 
 10. Scrieti o functie care sa trunchieze o phrase la un anumit numar de cuvinte.
