@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String chop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        * {
+            font-size: 24px;
+        }
+
+        body {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>String chop</h1>
+    <p>
+        Scrieti o functie care sa imparta un string in substring-uri de dimensiune data. Functia va avea 2 parametrii: string-ul si dimensiunea substring-urilor.<br>
+        string_chop('Javascript', 1) ---> 'J', 'a', 'v', 'a', 's', 'c', 'r', 'i', 'p', 't'<br>
+        string_chop('Javascript', 3) ---> 'Jav', 'asc', 'rip', 't'
+    </p>
+    <div id="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function string_chop(text, dim)
+        {
+            var chopsNo = Math.ceil(text.length / dim);
+            var firstPos = 0;
+
+            for (var i = 0; i < chopsNo; i++) {
+                show(text.substr(firstPos, dim));
+                firstPos = firstPos + dim;
+            }
+        }
+
+        var word = 'Javascript';
+        var n = 3;
+
+        string_chop(word, n);
+    </script>
+</body>
+</html>

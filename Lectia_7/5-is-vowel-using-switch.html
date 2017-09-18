@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Switch command</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        * {
+            font-size: 24px;
+        }
+
+        body {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function isVowel(char)
+        {
+            var itIs;
+            switch (char) {
+                case 'a':
+                case 'e':
+                case 'i':
+                case 'o':
+                case 'u':
+                    itIs = true;
+                    break;
+                default:
+                    itIs = false;
+                    break;
+            }
+
+            return itIs;
+        }
+
+        var char = 'b';
+        show(char + ' ' + (isVowel(char) ? 'is vowel' : 'is not a vowel'));
+    </script>
+</body>
+</html>

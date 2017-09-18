@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Numar aleator!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        * {
+            font-size: 24px;
+        }
+
+        body {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1>Numar aleator!</h1>
+                <p>
+                    Declarati o variabila N in care sa puneti un numar aleator de la 0 la 10. Cereti utilizatorului sa introduca un numar si verificati daca este cel din variabila N. Daca nu este, afisati "Not matched! Please try again!" si mai cereti inca o valoare. In cazul in care userul a ghicit numarul afisati "Good work!".<br>
+                    <ul>
+                        <li>Modificati scriptul astfel incat sa afisati utilizatorului si numarul de incercari din care a ghicit valoarea aleatoare.</li>
+                        <li>Modificati scriptul astfel incat numarul aleator N sa fie intre 0 si 20, iar pentru fiecare raspuns al utilizatorului sa
+                        afisati:
+                            <ul>
+                                <li>"rece" daca numarul utilizatorului nu este in intervalul [N - 3, N + 3]</li>
+                                <li>"caldut" daca numarul utilizatorului este in intervalul [N - 3, N + 3]</li>
+                                <li>"cald" daca numarul utilizatorului este in intervalul [N - 2, N + 2]</li>
+                                <li>"fierbinte" daca numarul utilizatorului este in intervalul [N - 1, N + 1]</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <div id="container"></div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function showErrorMessage(randomNumber, userNumber)
+        {
+            // if (userNumber >= randomNumber - 1 && userNumber <= randomNumber + 1) {
+            if (Math.abs(randomNumber - userNumber) == 1) {
+                return 'fierbinte';
+            }
+
+            // if (userNumber >= randomNumber - 2 && userNumber <= randomNumber + 2) {
+            if (Math.abs(randomNumber - userNumber) == 2) {
+                return 'cald';
+            }
+
+            // if (userNumber >= randomNumber - 3 && userNumber <= randomNumber + 3) {
+            if (Math.abs(randomNumber - userNumber) == 3) {
+                return 'caldut';
+            }
+
+            return 'rece';
+        }
+
+        function generateRandomNumberBetween(limitMin, limitMax)
+        {
+            return limitMin + Math.trunc(Math.random() * limitMax);
+        }
+
+        var randomNumber = generateRandomNumberBetween(1, 10);
+
+        var isTheRightNumber = false;
+        var numberOfStrikes = 0;
+
+        while (!isTheRightNumber) {
+            userNumber = prompt('Please enter a number between 1 and 10');
+            numberOfStrikes++;
+
+            if (userNumber == randomNumber) {
+                alert('Good work! ' + numberOfStrikes + ' strikes!');
+                isTheRightNumber = true;
+            } else {
+                alert("Not matched! Please try again!\r\nHint: " + showErrorMessage(randomNumber, userNumber));
+            }
+        }
+
+    </script>
+</body>
+</html>

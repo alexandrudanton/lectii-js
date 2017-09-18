@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Switch command</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        * {
+            font-size: 24px;
+        }
+
+        body {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Zilele din saptamana.
+    </p>
+    <div id="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function dayOfWeekWithIf(dayNumber)
+        {
+            if (dayNumber == 1) {
+                return 'Luni';
+            }
+            if (dayNumber == 2) {
+                return 'Marti';
+            }
+            if (dayNumber == 3) {
+                return 'Miercuri';
+            }
+            if (dayNumber == 4) {
+                return 'Joi';
+            }
+            if (dayNumber == 5) {
+                return 'Vineri';
+            }
+            if (dayNumber == 6) {
+                return 'Sambata';
+            }
+            if (dayNumber == 7) {
+                return 'Duminica';
+            }
+
+            return 'Error!';
+        }
+
+        function dayOfWeek(dayNumber)
+        {
+            var day = '';
+
+            switch (dayNumber) {
+                case 1:
+                    day = 'Luni';
+                    break;
+                case 2:
+                    day = 'Marti';
+                    break;
+                case 3:
+                    day = 'Miercuri';
+                    break;
+                case 4:
+                    day = 'Joi';
+                    break;
+                case 5:
+                    day = 'Vineri';
+                    break;
+                case 6:
+                    day = 'Sambata';
+                    break;
+                case 7:
+                    day = 'Duminica';
+                    break;
+                default:
+                    day = 'Error!';
+                    break;
+            }
+
+            return day;
+        }
+
+        show(dayOfWeek(5));
+    </script>
+</body>
+</html>

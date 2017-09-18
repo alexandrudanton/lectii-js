@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        * {
+            font-size: 24px;
+        }
+
+        body {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Instructiunea While</h1>
+    <div id="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        show('<strong>Numerele de la 1 la 10 folosind instructiunea FOR</strong>');
+        for (var i = 1; i <= 10; i++) {
+            show(i);
+        }
+
+        show('<br>');
+        show('<strong>Numerele de la 1 la 10 folosind instructiunea WHILE</strong>');
+        i = 1;
+        // cat timp i este mai mic sau egal cu 10 executa instructiunile dintre acolade
+        while (i <= 10) {
+            show(i);
+            i++;
+        }
+    </script>
+</body>
+</html>
