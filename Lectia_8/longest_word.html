@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1>Cel mai lung cuvant din propozitie!</h1>
+                <p>Declarati si initializati o variabila care sa contina o fraza fara semne de punctuatie. Scrieti un script care sa caute cel
+                mai lung cuvant.</p>
+                <div id="container"></div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        var phrase = 'lorem ipsum dolor sit amet consectetur adipiscing elit morbi quis lectus in ex tempus sagittis ac id dolor maecenas atjasdhfjshdfklhsdlfhdk';
+        var phraseLength = phrase.length;
+
+        var max = 0;
+        var maxWord = '';
+        var noOfSpaces = phrase.length - phrase.replace(/ /g, '').length;
+        var currentWord;
+        var prevSpacePos = 0;
+
+        show('<strong>Propozitia:</strong> ' + phrase);
+        show('');
+
+        for (var i = 0; i < noOfSpaces; i++) {
+            currentWord = phrase.substring(prevSpacePos, phrase.indexOf(' ', prevSpacePos + 1));
+            prevSpacePos = phrase.indexOf(' ', prevSpacePos + 1);
+            if (currentWord.length > max) {
+                max = currentWord.length;
+                maxWord = currentWord;
+            }
+        }
+
+        currentWord = phrase.substring(prevSpacePos);
+        if (currentWord.length > max) {
+            max = currentWord.length;
+            maxWord = currentWord;
+        }
+        show('<strong>Cel mai lung cuvant:</strong> ' + maxWord);
+    </script>
+</body>
+</html>

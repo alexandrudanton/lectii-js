@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Longest Word in the String</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>The Longest Word in the String</h1>
+
+    <div id="container"></div>
+    <script>
+        function show(message)
+        {
+            $('#container').append('<br>' + message);
+        }
+
+        var text = 'Web Development Tutorial';
+        // var text = 'The longest word in the string';
+        var maxWordLength = 0;
+        var maxWord = '';
+        var noOfSpaces = text.match(/ /g).length;
+
+        var prevSpacePos = 0;
+        var nextSpacePos = 0;
+        var wordLength;
+
+        for (var i = 0; i <= noOfSpaces; i++) {
+            nextSpacePos = text.indexOf(' ', prevSpacePos + 1);
+
+            if (nextSpacePos < 0) {
+                nextSpacePos = text.length;
+            }
+
+            if (prevSpacePos != 0) {
+                prevSpacePos++;
+            }
+
+            wordLength = nextSpacePos - prevSpacePos;
+
+            if (wordLength > maxWordLength) {
+                maxWordLength = wordLength;
+                maxWord = text.substring(prevSpacePos, nextSpacePos);
+            }
+
+            prevSpacePos = nextSpacePos;
+        }
+
+        show('>' + maxWord + '<');
+    </script>
+</body>
+</html>
