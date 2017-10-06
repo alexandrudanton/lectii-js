@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Title</h1>
+                <p>Sa se afiseze cuvantul/cuvintele din mijlocul unei fraze</p>
+                <div id="container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').append('<br>' + message);
+        }
+
+        function getNoOfSpaces(text)
+        {
+            return text.length - text.replace(/ /g, '').length;
+        }
+
+        var phrase = "Lorem ipsum dolor sit amet abc";
+        var noOfSpaces = getNoOfSpaces(phrase);
+        var noOfWords = noOfSpaces + 1;
+
+        var indexStart = 0;
+        var indexEnd;
+        var word;
+        var firstWord = '';
+        var secondWord = '';
+
+        show(phrase);
+
+        for (var i = 1; i <= Math.floor(noOfWords / 2) + 1; i++) {
+            indexEnd = phrase.indexOf(' ', indexStart);
+            word = phrase.substring(indexStart, indexEnd);
+            indexStart = indexEnd + 1;
+
+            firstWord = secondWord;
+            secondWord = word;
+        }
+
+
+        if (noOfWords % 2 == 0) {
+            show(firstWord + ' ' + secondWord);
+        } else {
+            show(secondWord);
+        }
+    </script>
+</body>
+</html>
