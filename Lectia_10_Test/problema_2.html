@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test :: Problema 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Problema 2</h1>
+                <p>Se da variabila:</p>
+                <pre>var phrase = 'The quick brown fox jumps over the lazy dog';</pre>
+                <p>Scrieti un script care:</p>
+                <ol>
+                    <li>sa afiseze primul cuvant;</li>
+                    <li>sa afiseze cuvantul al treilea (va rog sa evitati folosirea instructiunii "show('brown');" :-P);</li>
+                    <li>sa afiseze ultimul cuvant;</li>
+                    <li> sa afiseze o noua fraza in care sa inversati in phrase cuvintele `fox` si `dog` (recomand folosirea instructiunii `.replace()`,
+                    dar puteti sa folositi si alte metode).<br>
+                    <em>Tip 1: pentru a inversa continutul a doua pahare cu lichid este nevoie de un al treilea pahar ;-)</em><br>
+                </ol>
+                <div id="container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message) {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+    </script>
+</body>
+
+</html>

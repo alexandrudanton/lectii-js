@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test :: Problema 3</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Vocale si consoane</h1>
+                <p>Declarati si initializati o variabila care sa contina un string format doar din litere mici. Scrieti un script care sa parcurga acest string si sa construiasca un nou cuvant inlocuind vocalele cu 0 si consoanele cu 1. Pentru a determina cifra corespunzatoare caracterului curent din sir scrieti o functie care primeste ca parametru caracterul si returneaza 0 sau 1 dupa caz. Se vor lua in considerare doar vocalele din limba engleza, deci fara diacritice. </p>
+                <pre>
+                    pentru var word = 'abcdef'
+                    noul cuvant este '011101'</pre>
+                <div id="container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message) {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+    </script>
+</body>
+
+</html>
