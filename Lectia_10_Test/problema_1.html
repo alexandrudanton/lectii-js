@@ -19,7 +19,27 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        function show(message){$('#container').html($('#container').html()+'<br>'+message);}function multiplyChar(char,count){return char.repeat(count);} var word='abcdef';var newWord='';var count;for(var i=word.length-1;i>=0;i--){count=i%2==0?2:3;newWord+=multiplyChar(word[i],count);}show('Initial word: '+word);show('Transformed word: '+newWord);
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function multiplyChar(char, count)
+        {
+            return char.repeat(count);
+        }
+
+        var word = 'abcdef';
+        var newWord = '';
+        var count;
+
+        for (var i = word.length - 1; i >= 0; i--) {
+            count = i % 2 == 0 ? 2 : 3;
+            newWord += multiplyChar(word[i], count);
+        }
+
+        show('Initial word: ' + word);
+        show('Transformed word: ' + newWord);
     </script>
 </body>
 

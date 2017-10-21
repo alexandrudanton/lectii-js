@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Test :: Problema 5</title>
+    <title>Test :: Problema 6</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -20,8 +20,101 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         function show(message) {
-            $('#container').html($('#container').html() + '<br>' + message);
+            $('#container').html($('#container').html() + '<br><br>' + message);
         }
+
+        function searchWordWithRegexp(phrase, word, n)
+        {
+            phrase = phrase.toLowerCase();
+            word = word.toLowerCase();
+            var pattern = '([^a-zA-Z]|^)' + word + '([^a-zA-Z]|$)';
+            var re = new RegExp(pattern, 'g');
+
+            show(phrase.match(re));
+
+            return phrase.match(re).length == n;
+        }
+
+        function isLetterOrDigit(char)
+        {
+            return char.match(/[a-zA-Z0-9]/);
+        }
+
+        function isOnTheFirstPos(i, phrase, word)
+        {
+            // show('first: ' + i + ' - ' + phrase + ' - ' + word);
+            // show(i == 0);
+            // show(phrase.indexOf(word) == 0);
+            // show('>' + phrase[word.length] + '<');
+            // show(phrase[word.length].match(/[a-zA-Z0-9]/));
+            var itIs = i == 0 && phrase.indexOf(word) == 0 && !isLetterOrDigit(phrase[word.length]);
+            // show(itIs);
+            return itIs;
+        }
+
+        function isOnTheLastPos(i, phrase, word)
+        {
+            // show('last: ' + i + ' - ' + phrase + ' - ' + word);
+            // show(i + ' - ' + phrase.length + ' - ' + word.length);
+            // show(i == phrase.length - word.length - 1);
+            // show('>' + phrase.substring(i, phrase.length - 1) + '<');
+            // show(word == phrase.substring(i, phrase.length - 1));
+            // show(phrase[phrase.length - 1]);
+            var itIs = (
+                    i == phrase.length - word.length
+                    && word == phrase.substring(i)
+                ) || (
+                    i == phrase.length - word.length - 1
+                    && word == phrase.substring(i, phrase.length - 1)
+                    && !isLetterOrDigit(phrase[phrase.length - 1])
+                );
+            // show(itIs);
+            return itIs;
+        }
+
+        function searchWord(phrase, word, n)
+        {
+            var limit = phrase.length - word.length;
+            var noOfOccurences = 0;
+
+            phrase = phrase.toLowerCase();
+            word = word.toLowerCase();
+
+            for (var i = 0; i <= limit; i++) {
+                if (isOnTheFirstPos(i, phrase, word)) {
+                    noOfOccurences++;
+                    // show('intra 1 - ' + noOfOccurences);
+                } else if (isOnTheLastPos(i, phrase, word)) {
+                    noOfOccurences++;
+                    // show('intra 2 - ' + noOfOccurences);
+                } else if (word == phrase.substr(i, word.length) && !isLetterOrDigit(phrase[i - 1]) && !isLetterOrDigit(phrase[i + word.length])) {
+                    noOfOccurences++;
+                    // show('intra 3 - ' + noOfOccurences);
+                }
+            }
+
+            return noOfOccurences == n;
+        }
+
+        // show(isOnTheLastPos(0, 'abc 123', 'abc'));
+        // show(isOnTheLastPos(4, '123 abc', 'abc'));
+
+        // var phrase = 'Lorem ipsum dolor abc sit amet, consectetur adipiscing elit "abc". Nunc ac nisl conseabcctetur, pulvinar nisl vitae abc, convallis risus. Sed egestas convallis.';
+        // var phrase = 'Lorem ipsum dolor abc sit amet, consectetur adipiscing elit. Nunc ac nisl conseabcctetur, pulvinar nisl vitae abc, convallis risus. Sed egestas convallis.';
+        var n = 2;
+        var phrase = 'Abc Lorem ipsum dolor abc sit amet, consectetur adipiscing elit "abc". Nunc ac nisl conseabcctetur, pulvinar nisl vitae abc, convallis risus. Sed egestas convallis. abc!';
+        // var n = 5;
+
+        // var phrase = 'Abc 123 abc';
+        // var n = 2;
+        var word = 'abc';
+
+        if (searchWord(phrase, word, n)) {
+            show('yes');
+        } else {
+            show('no');
+        }
+
 
     </script>
 </body>

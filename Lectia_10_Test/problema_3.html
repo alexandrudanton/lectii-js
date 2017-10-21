@@ -22,10 +22,56 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        function show(message) {
+        function show(message)
+        {
             $('#container').html($('#container').html() + '<br>' + message);
         }
 
+        function isVowel(char)
+        {
+
+        }
+
+        function getDigit(char)
+        {
+            // varianta cu match
+            if (char.match(/[aeiou]/)) {
+                return '0';
+            }
+
+            return '1';
+
+            // // varianta cu if
+            // if (char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u') {
+            //     return '0';
+            // }
+            // return '1';
+
+            // // varianta cu switch
+            // switch (char) {
+            //     case 'a':
+            //     case 'e':
+            //     case 'i':
+            //     case 'o':
+            //     case 'u':
+            //         return '0';
+            //         break;
+            //     default:
+            //         return '1';
+            //         break;
+            // }
+        }
+
+        var word = 'abcdef';
+        var wordLength = word.length;
+        var newWord = '';
+
+        show('Initial word: ' + word);
+        for (var i = 0; i < wordLength; i++) {
+            newWord += getDigit(word[i]);
+        }
+
+        show('New word: ' + newWord);
     </script>
 </body>
 

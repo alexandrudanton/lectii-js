@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <title>Test :: Problema 5</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        p {
+            font-size: 24px;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,9 +17,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h1>Suma a doua numere in format string</h1>
-                <p>Se dau variabilele:
+                <p>Se dau variabilele:</p>
                     <pre>var firstNumber = '52987';<br>var secondNumber = '48361';</pre>
-                    Scrieti un script care sa simuleze adunarea celor doua numere fara a le converti la integer. Numerele vor fi tratate ca string. Doar la adunarea cifrelor acestea se vor converti la integer. Presupunem ca cele doua numere au acelasi numar de cifre. Se vor aduna pe rand cifrele de la acelasi index si se va tine cont de transportul de la adunarea cifrelor anterioare. Ca la matematica in a 2-a :-).
+                <p>Scrieti un script care sa simuleze adunarea celor doua numere fara a le converti la integer. Numerele vor fi tratate ca string. Doar la adunarea cifrelor acestea se vor converti la integer. Presupunem ca cele doua numere au acelasi numar de cifre. Se vor aduna pe rand cifrele de la acelasi index si se va tine cont de transportul de la adunarea cifrelor anterioare. Ca la matematica in a 2-a :-).</p>
                 </p>
                 <div id="container"></div>
             </div>
@@ -25,6 +30,32 @@
         function show(message) {
             $('#container').html($('#container').html() + '<br>' + message);
         }
+
+        var sum = '';
+        var firstNumber = '52987';
+        var secondNumber = '48361';
+        var sum2Digits = 0;
+        var carry = 0;
+        var rest = 0;
+
+        // var firstNumber = '52987';
+        // var secondNumber = '48361';
+        for (var i = firstNumber.length - 1; i >= 0; i--) {
+            sum2Digits = parseInt(firstNumber[i]) + parseInt(secondNumber[i]) + carry;
+            carry = 0;
+            rest = sum2Digits % 10;
+            if (sum2Digits > 9) {
+                carry = 1;
+            }
+
+            sum = rest.toString() + sum;
+        }
+
+        if (carry) {
+            sum = carry.toString() + sum;
+        }
+
+        show(firstNumber + ' + ' + secondNumber + ' = ' + sum);
 
     </script>
 </body>

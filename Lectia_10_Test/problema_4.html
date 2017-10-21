@@ -23,6 +23,57 @@
             $('#container').html($('#container').html() + '<br>' + message);
         }
 
+        var phrase = 'sjhf2873e89jaskdh3';
+        var phraseLength = phrase.length;
+        var minDigit = false;
+        var maxDigit = false;
+        var minLetter = false;
+        var maxLetter = false;
+
+        show(phrase);
+
+        for (var i = 0; i < phraseLength; i++) {
+            // if (phrase[i].toUpperCase() == phrase[i]) {
+            if (Number.isInteger(parseInt(phrase[i]))) {
+                // if (minDigit === false) {
+                if (typeof(minDigit) === "boolean") {
+                    minDigit = parseInt(phrase[i]);
+                } else {
+                    if (minDigit > phrase[i]) {
+                        minDigit = parseInt(phrase[i]);
+                    }
+                }
+
+                if (typeof(maxDigit) === "boolean") {
+                    maxDigit = parseInt(phrase[i]);
+                } else {
+                    if (maxDigit < phrase[i]) {
+                        maxDigit = parseInt(phrase[i]);
+                    }
+                }
+            } else {
+                if (typeof(minLetter) === "boolean") {
+                    minLetter = phrase[i];
+                } else {
+                    if (minLetter > phrase[i]) {
+                        minLetter = phrase[i];
+                    }
+                }
+
+                if (typeof(maxDigit) === "boolean") {
+                    maxLetter = phrase[i];
+                } else {
+                    if (maxLetter < phrase[i]) {
+                        maxLetter = phrase[i];
+                    }
+                }
+            }
+        }
+
+        show('Min digit: ' + minDigit);
+        show('Max digit: ' + maxDigit);
+        show('Min letter: ' + minLetter);
+        show('Max letter: ' + maxLetter);
     </script>
 </body>
 

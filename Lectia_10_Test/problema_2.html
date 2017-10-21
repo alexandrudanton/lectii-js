@@ -29,9 +29,64 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        function show(message) {
+        function show(message)
+        {
             $('#container').html($('#container').html() + '<br>' + message);
         }
+
+        function reverse(phrase)
+        {
+            var newPhrase = '';
+
+            for (var i = phrase.length - 1; i >= 0; i--) {
+                newPhrase += phrase[i];
+            }
+
+            return newPhrase;
+        }
+
+        var phrase = 'The quick dog brown fox jumps over the fox lazy dog fox';
+        var posFirstSpace = phrase.indexOf(' ');
+        var firstWord = phrase.substring(0, posFirstSpace);
+        show('First word: ' + firstWord);
+
+        var posSecondSpace = phrase.indexOf(' ', posFirstSpace + 1);
+        var posThirdSpace = phrase.indexOf(' ', posSecondSpace + 1);
+        var thirdWord = phrase.substring(posSecondSpace, posThirdSpace);
+        show('Third word: ' + thirdWord);
+
+        var reversedPhrase = reverse(phrase);
+        posFirstSpace = reversedPhrase.indexOf(' ');
+        var lastWord = reversedPhrase.substring(0, posFirstSpace);
+        lastWord = reverse(lastWord);
+        show('Last word: ' + lastWord);
+
+        show('');
+
+        show(phrase);
+        var newPhrase = phrase.replace(/dog/g, '666');
+        // show(newPhrase);
+        newPhrase = newPhrase.replace(/fox/g, 'dog');
+        newPhrase = newPhrase.replace(/666/g, 'fox');
+        show(newPhrase);
+
+        // var a = 5;
+        // var b = 3;
+        // var aux = a;
+        // a = b;
+        // b = aux;
+        // show(a + ' --- ' + b);
+
+        // // a = 3, b = 5
+        // a = a + b;
+        // b = a - b;
+        // a = a - b;
+        // show(a + ' --- ' + b);
+
+
+
+
+
     </script>
 </body>
 
