@@ -66,19 +66,22 @@ console.log(elements);
 
 var sortedElements = elements.sort();
 console.log(sortedElements);
+
+// afisarea primului element
 console.log(sortedElements[0]);
+
+// afisarea ultimului element
 console.log(sortedElements[sortedElements.length - 1]);
 
-// sortedElements = elements.sort(function (element1, element2) {
-//     console.log(element1, element2);
-//     console.log(element1.toLowerCase() < element2.toLowerCase());
-//     if (element1.toLowerCase() < element2.toLowerCase()) {
-//         return true;
-//     }
+// sortarea crescatoare a unui sir de string-uri, ignorand literele mari
+sortedElements = elements.sort(function (element1, element2) {
+    if (element1.toLowerCase() < element2.toLowerCase()) {
+        return -1;
+    }
 
-//     return false;
-// });
-// console.log(sortedElements);
+    return 1;
+});
+console.log(sortedElements);
 
 var numbers = [4, 7, 2, 6, 8, 30, 9, 10, 5];
 var sortedNumbers = numbers.sort(function (number1, number2) {
