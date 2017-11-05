@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Minim si maxim</h1>
+                <p>Parcurgeti array-ul si aflati valoarea minima si cea maxima</p>
+                <div id="container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function randomNumber() {
+            var randomValue = Math.random();
+            var randomIntNumber = Math.floor(randomValue * 10);
+            return randomIntNumber;
+        }
+
+        var numbers = [];
+
+        for (var i = 0; i < 10; i++) {
+            numbers.push(randomNumber());
+        }
+        var numbersLength = numbers.length;
+
+        var min = numbers[0];
+        var max = numbers[0];
+
+        for (var i = 1; i < numbersLength; i++) {
+            if (min > numbers[i]) {
+                min = numbers[i];
+            }
+
+            if (max < numbers[i]) {
+                max = numbers[i];
+            }
+        }
+
+        for (var i = 0; i < numbersLength; i++) {
+            console.log('Elementul #' + (i + 1) + ': ' + numbers[i]);
+        }
+
+        /*
+            // varianta scurta folosind functia .sort()
+            console.log(numbers);
+            var sortedNumbers = numbers.sort();
+            console.log(numbers);
+            min = sortedNumbers[0];
+            max = sortedNumbers[sortedNumbers.length - 1];
+        */
+
+        console.log('Min: ' + min);
+        console.log('Max: ' + max);
+    </script>
+</body>
+</html>

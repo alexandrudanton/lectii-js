@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Title</h1>
+                <p>Write a JavaScript program which accept a number as input and insert dashes (-) between each two even numbers. For example if you accept 025468 the output should be 0-254-6-8.</p>
+                <div id="container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function randomNumber() {
+            var randomValue = Math.random();
+            var randomIntNumber = Math.floor(randomValue * 10);
+            return randomIntNumber;
+        }
+
+        function isEven(number)
+        {
+            if (number % 2 == 0) {
+                return true;
+            }
+
+            return false;
+
+            // return number % 2 == 0;
+            // return !(number % 2);
+        }
+
+        var text = '025468';
+        var numbers = text.split('');
+        var convNrs = numbers.map(number => parseInt(number));
+        /*
+        // varianta 2
+        convNrs = numbers.map(function(number) {
+            return parseInt(number);
+        });
+
+        // varianta 3
+        var convNrs = [];
+        for (var i = 0; i < numbers.length; i++) {
+            convNrs.push(parseInt(numbers[i]));
+        }
+        */
+
+        console.log(numbers);
+        console.log(convNrs);
+
+        var newArray = [];
+        var convNrsLength = convNrs.length;
+
+        // for (var i = 0; i < convNrsLength - 1; i++) {
+        //     newArray.push(convNrs[i]);
+
+        //     if (isEven(convNrs[i]) && isEven(convNrs[i + 1])) {
+        //         newArray.push('-');
+        //     }
+        // }
+        // newArray.push(convNrs[i]);
+
+        newArray.push(convNrs[0]);
+        for (var i = 1; i < convNrsLength; i++) {
+            if (isEven(convNrs[i - 1]) && isEven(convNrs[i])) {
+                newArray.push('-');
+            }
+
+            newArray.push(convNrs[i]);
+        }
+
+        console.log(newArray.join(''));
+    </script>
+</body>
+</html>

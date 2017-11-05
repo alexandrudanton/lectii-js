@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Title</h1>
+                <p>Problem</p>
+                <div id="container">
+                    <input type="text" id="numberContainer" value="15">
+                    <button onclick="increment()" id="incrementBttn">+1</button>
+                    <button onclick="decrement()" id="decrementBttn">-1</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function show(message)
+        {
+            $('#container').html($('#container').html() + '<br>' + message);
+        }
+
+        function increment()
+        {
+            var initialValue = parseInt($('#numberContainer').val());
+            var newValue = initialValue + 1;
+
+            if (newValue > 0) {
+                $('#decrementBttn').show();
+            }
+
+            if (newValue > 9) {
+                newValue = 10;
+                $('#incrementBttn').hide();
+            }
+
+            $('#numberContainer').val(newValue);
+            // $('#numberContainer').val(parseInt($('#numberContainer').val()) + 1);
+        }
+
+        function decrement()
+        {
+            var initialValue = parseInt($('#numberContainer').val());
+            var newValue = initialValue - 1;
+            if (newValue < 0) {
+                newValue = 0;
+            }
+
+            if (newValue == 0) {
+                $('#decrementBttn').hide();
+            }
+
+            if (newValue <= 10) {
+                $('#incrementBttn').show();
+            }
+            $('#numberContainer').val(newValue);
+        }
+
+        $(function () {
+            if ($('#numberContainer').val() <= 0) {
+                $('#numberContainer').val(0);
+                $('#decrementBttn').hide();
+            }
+
+            if ($('#numberContainer').val() > 10) {
+                $('#numberContainer').val(10);
+                $('#incrementBttn').hide();
+            }
+        });
+    </script>
+</body>
+</html>
