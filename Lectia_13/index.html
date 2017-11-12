@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .fa {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .fa-times {
+            color: #F00;
+        }
+
+        .fa-minus-square-o {
+            color: #F37121;
+        }
+
+        .fa-check {
+            color: #00573C;
+        }
+
+        .done li {
+            text-decoration: line-through;
+        }
+
+        /*.fa-times:hover::after {
+            content: 'delete item';
+            color: #666;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>To do</h1>
+                <div id="container">
+                    <input type="text" id="text" placeholder="enter item">
+                    <button onclick="add();">ADD</button>
+                    <h2>To do</h2>
+                    <div class="todo-list-container"></div>
+                    <h2>Done</h2>
+                    <div class="done-list-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        var todoList = [
+            'de cumparat paine',
+            'de cumparat lapte',
+            'de dus masina la spalat'
+        ];
+
+        var doneList = [
+            'de cumparat prajituri'
+        ];
+
+        function add()
+        {
+            var hasBeenAdded = addElement();
+            if (hasBeenAdded) {
+                showAllLists();
+                clearField();
+            }
+        }
+
+        function addElement()
+        {
+            var value = $('#text').val();
+            if (value == '') {
+                return false;
+            }
+
+            todoList.push(value);
+            return true;
+        }
+
+        function renderList(list, type)
+        {
+            var htmlList = '<ul class="' + type + '">';
+
+            list.map(function (item, index) {
+                var operations = '<i class="fa fa-times" onclick="deleteItem(' + index + ', \'' + type + '\');"></i>';
+                if (type == 'todo') {
+                    operations += '<i class="fa fa-check" onclick="markAsChecked(' + index + ');"></i>';
+                } else {
+                    operations += '<i class="fa fa-minus-square-o" onclick="markAsUnchecked(' + index + ');"></i>';
+                }
+                htmlList += '<li id="item_' + index + '">' + item + operations + '</li>';
+            });
+
+            htmlList += '</ul>';
+
+            return htmlList;
+        }
+
+        function showList(container, htmlList)
+        {
+           container.html(htmlList);
+        }
+
+        function clearField()
+        {
+            $('#text').val('');
+        }
+
+        function showListInHtml(list, container, type)
+        {
+            var htmlList = renderList(list, type);
+            showList(container, htmlList);
+        }
+
+        function deleteItem(id, type)
+        {
+            // remove from html
+            // $(sender).closest('li').remove();
+
+            var list = type == 'todo' ? todoList : doneList;
+            list.splice(id, 1);
+
+            showListInHtml(list, $('.' + type + '-list-container'), type);
+       }
+
+        function markAsChecked(id)
+        {
+            /*
+            $('#item_' + id).css({
+               'text-decoration': 'line-through'
+            });
+            */
+
+            doneList.push(todoList[id]);
+            todoList.splice(id, 1);
+
+            showAllLists();
+        }
+
+        function markAsUnchecked(id)
+        {
+            todoList.push(doneList[id]);
+            doneList.splice(id, 1);
+
+            showAllLists();
+        }
+
+        function showAllLists()
+        {
+            showListInHtml(todoList, $('.todo-list-container'), 'todo');
+            showListInHtml(doneList, $('.done-list-container'), 'done');
+        }
+
+        $(function () {
+            showAllLists();
+        });
+    </script>
+</body>
+</html>
