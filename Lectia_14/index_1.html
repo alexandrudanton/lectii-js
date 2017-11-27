@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 14 :: Problema 1</title>
+</head>
+<body>
+    <script>
+        /*
+            Scrieti un script care sa converteasca un string, continand prenume si nume, la forma abreviata.
+            'Alex Anton' ---> 'Alex A.'
+        */
+
+        // in primul rand avem nevoie de o variabila in care sa punem prenumele si numele
+        var fullname = 'Alex Anton'; // pentru ca cerinta problemei nu precizeaza altceva, vom lucra doar cu un prenume, nu doua!!
+
+        /*
+            pentru a abrevia numele trebuie sa selectam din string-ul din variabila fullname
+            toate caracterele de la pozitia 0 pana la pozitia spatiului + 1
+        */
+        // pentru asta trebuie sa determinam pozitia spatiului
+        var spacePosition = fullname.indexOf(' ');
+
+        // pentru a extrage toate caracterele pana la pozitia dorita folosim functia substring
+        var abbrevName = fullname.substring(0, spacePosition + 2); // +2 pentru ca vrem sa extrage si urmatorul caracter de dupa spatiu si pentru ca functia substring ignora ultima pozitie specificata de noi prin al doilea parametru
+
+        // si partea cea mai grea: adaugarea punctului la final :-))
+        abbrevName = abbrevName + '.'; // sau varianta scurta: abbrevName += '.'
+
+        console.log(abbrevName);
+
+        /*
+        !!! incercati sa refaceti rezolvarea problemei fara a va uita aici :-) !!!
+        */
+    </script>
+</body>
+</html>

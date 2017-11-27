@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 14 :: Problema 2</title>
+</head>
+<body>
+    <script>
+        /*
+            Scrieti un script care sa transforme un string dupa modelul urmator:
+            'Robin Singh from USA.' ---> 'robin-singh-from-usa'
+
+            Din cerinta problemei observam ca avem nevoie de urmatoarele:
+                - o variabila de tip string in care sa punem textul
+                - o functie care sa scoata punctele / semnele de punctuatie
+                - o functie care sa inlocuiasca spatiile cu '-'
+                - o functie care le combina pe cele doua de mai sus si care converteste textul la litere mici
+
+            Pentru o mai buna organizare a codului vom grupa la inceputul scriptului toate functiile.
+        */
+
+        function removePunctuationMarks(text)
+        {
+            /*
+                pentru a scoate toate semnele de punctuatie avem nevoie de un
+                replace in care folosim un pattern de regular expression
+
+                acesta este format dintr-o clasa de caractere in care enumeram
+                semnele de punctuatie pe care dorim sa le scoatem
+            */
+            var newText = text.replace(/[.,!?]/g, '');
+            return newText;
+        }
+
+        function replaceSpacesWithDashes(text)
+        {
+            /*
+                pentru a scoate toate spatiile vom folosi tot regular expressions
+            */
+            var newText = text.replace(/ /g, '-');
+            return newText;
+        }
+
+        function transform(text)
+        {
+            var newText = removePunctuationMarks(text);
+            newText = replaceSpacesWithDashes(newText);
+
+            newText = newText.toLowerCase();
+
+            return newText;
+        }
+
+        // declaram si initializam variabila de tip string cu textul nostru
+        var phrase = 'Robin Singh from USA.';
+        var transformedPhrase = transform(phrase);
+
+        console.log('Fraza initiala: ' + phrase);
+        console.log('Fraza transformata: ' + transformedPhrase);
+
+        // pentru a ne asigura ca am scris un cod corect, schimbam valoarea initiala a variabilei
+        phrase = 'Lorem, ipsum... dolor! sit amet?';
+        transformedPhrase = transform(phrase);
+
+        console.log('Fraza initiala: ' + phrase);
+        console.log('Fraza transformata: ' + transformedPhrase);
+    </script>
+</body>
+</html>

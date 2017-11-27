@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 14 :: Problema 3</title>
+</head>
+<body>
+    <script>
+        /*
+            Scrieti un script care sa transforme literele mari in litere mici si cele mici in litere mari dintr-un string.
+            'AaBbc' ---> 'aAbBC'
+
+            Pentru a transforma string-ul avem nevoie de urmatoarele:
+                - o variabila in care vom pune string-ul nostru
+                - o functie care va determina daca o litera este mica sau mare
+                - o functie care va transforma string-ul. Aceasta va fi formata dintr-un for (cu ajutorul
+                    caruia vom parcurge string-ul si vom transforma fiecare litera) si dintr-un if ... else (cu
+                    ajutorul caruia vom decide ce tip de litera avem)
+        */
+
+        function isUpperCase(letter)
+        {
+            if (letter.toUpperCase() == letter) {
+                return true;
+            }
+
+            return false;
+            /*
+                // sau varianta scurta: in locul if-ului si al ultimului return vom avea doar:
+                return letter.toUpperCase() == letter;
+            */
+        }
+
+        function transform(text)
+        {
+            /*
+                pentru ca o variabila de tip string este immutable (adica nu poate fi modificata)
+                    avem nevoie de o noua variabila in care vom pune pe rand fiecare litera transformata
+            */
+            var newText = '';
+            var textLength = text.length;
+
+            for (var i = 0; i < textLength; i++) {
+                if (isUpperCase(text[i])) {
+                    newText += text[i].toLowerCase();
+                } else {
+                    newText += text[i].toUpperCase();
+                }
+            }
+
+            return newText;
+        }
+
+        var word = 'AoOpWwWmmQ';
+        var transformedWord = transform(word);
+
+        console.log('Cuvantul initial: ' + word);
+        console.log('Cuvantul transformat: ' + transformedWord);
+
+        // schimbam valoarea initiala a variabilei pentru a testa codul
+        word = 'aAbBCc';
+        transformedWord = transform(word);
+
+        console.log('Cuvantul initial: ' + word);
+        console.log('Cuvantul transformat: ' + transformedWord);
+
+        /*
+        !!! incercati sa rezolvati singuri problema asta fara a va uita peste codul asta !!!
+        (puteti sa va notati pe o foaie de hartie ce anume trebuie sa faceti si pe urma
+            sa incercati sa rezolvati singuri problema)
+        */
+    </script>
+</body>
+</html>
