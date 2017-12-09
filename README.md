@@ -1,11 +1,15 @@
 # Link-uri utile
-- http://jstherightway.org/
-- https://github.com/bpesquet/thejsway
-- https://docs.emmet.io/cheat-sheet/
-- https://github.com/zeeshanu/learn-regex
+
+* http://jstherightway.org/
+* http://javascript.info/
+* https://github.com/bpesquet/thejsway
+* https://docs.emmet.io/cheat-sheet/
+* https://github.com/zeeshanu/learn-regex
 
 # Link-uri CDN
+
 ## jQuery
+
 ```javascript
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -17,6 +21,7 @@
 ```
 
 ## Bootstrap
+
 **Latest compiled and minified CSS**
 
 ```javascript
@@ -29,9 +34,8 @@ _Optional theme_
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 ```
 
-
 **Latest compiled and minified JavaScript**
 
 ```javascript
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />;
 ```

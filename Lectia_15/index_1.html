@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lectia 15</title>
+</head>
+
+<body>
+    <script>
+        var nr1 = 5;
+        var nr2 = 7;
+        var nr3 = -2;
+        var nr4 = 3;
+        var nr5 = 9;
+        var nr6 = 19;
+
+        var max = nr1;
+        if (max < nr2) {
+            max = nr2;
+        }
+        if (max < nr3) {
+            max = nr3;
+        }
+        if (max < nr4) {
+            max = nr4;
+        }
+        if (max < nr5) {
+            max = nr5;
+        }
+
+        console.log('Maxim: ' + max);
+
+        function getMaxValue(elements) {
+            var elementsLength = elements.length;
+
+            if (elementsLength == 0) {
+                return 'no number found';
+            }
+
+            var max = elements[0];
+
+            if (elementsLength > 1) {
+                for (var i = 1; i < elementsLength; i++) {
+                    if (max < elements[i]) {
+                        max = elements[i];
+                    }
+                }
+            }
+
+            return max;
+        }
+
+        var numbers = [-1, 6, 3];
+        // var max = getMaxValue(numbers);
+
+        var max = Math.max(...numbers);// spread operator
+
+        console.log('Maxim: ' + max);
+    </script>
+</body>
+
+</html>

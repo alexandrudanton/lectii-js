@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+p {
+    color: #666;
+    text-align: justify;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.container {
+    height: 90vh;
+    width: 90%;
+    margin: 5vh auto;
+    overflow: hidden;
+}
+
+.scrollable {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 50px;
+    margin-right: -17px;
+}
+
+.horizontal-scroll {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 10px;
+}
+
+.horizontal-scroll .loader {
+    height: 100%;
+    width: 0px;
+    background: #00573c;
+}

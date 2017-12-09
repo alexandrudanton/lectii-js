@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 15 :: Problema 2</title>
+</head>
+
+<body>
+    <script>
+        function isAPalindrom(word) {
+            var wordLength = word.length;
+            var halfLength = Math.trunc(word.length / 2);
+
+            var isPalindrom = true;
+
+            for (var i = 0; i < halfLength; i++) {
+                if (word[i] != word[wordLength - i - 1]) {
+                    isPalindrom = false;
+                }
+            }
+
+            return isPalindrom;
+        }
+
+        var word = "radar";
+        var isPalindrom = isAPalindrom(word);
+        console.log('Cuvant "' + word + '" ' + (isPalindrom ? '' : 'nu ') + 'este palindrom');
+
+        word = 'abcdcba';
+        isPalindrom = isAPalindrom(word);
+        console.log('Cuvant "' + word + '" ' + (isPalindrom ? '' : 'nu ') + 'este palindrom');
+
+    </script>
+</body>
+
+</html>
