@@ -8,19 +8,20 @@
 
 <body>
     <script>
+        /*
+            Declarati si initializati o variabila care sa contina un cuvant. Scrieti un script care sa verifice daca acel cuvant este palindrom (citit invers este la fel cu cuvantul initial)
+        */
         function isAPalindrom(word) {
             var wordLength = word.length;
             var halfLength = Math.trunc(word.length / 2);
 
-            var isPalindrom = true;
-
             for (var i = 0; i < halfLength; i++) {
                 if (word[i] != word[wordLength - i - 1]) {
-                    isPalindrom = false;
+                    return false;
                 }
             }
 
-            return isPalindrom;
+            return true;
         }
 
         var word = "radar";
@@ -31,6 +32,38 @@
         isPalindrom = isAPalindrom(word);
         console.log('Cuvant "' + word + '" ' + (isPalindrom ? '' : 'nu ') + 'este palindrom');
 
+        /*
+            varianta cu array
+        */
+        function isAPalindromUsingArray(word) {
+            // construim o noua variabila in care punem cuvantul nostru
+            var tmpWord = word;
+
+            // construim un array format din literele cuvantului nostru
+            tmpWord = tmpWord.split('');
+
+            // inversam array-ul nostru
+            tmpWord = tmpWord.reverse();
+
+            // "lipim" la loc literele cuvantului
+            tmpWord = tmpWord.join('');
+
+            // verificam daca noul cuvant este identic cu cel initial trimis in functie ca parametru
+            if (word == tmpWord) {
+                return true;
+            }
+
+            return false;
+
+            /*
+            // varianta scurta a acestei functii :-)
+            return word == word.split('').reverse().join('');
+            */
+        }
+
+        word = 'qwer1ewq';
+        isPalindrom = isAPalindromUsingArray(word);
+        console.log('Cuvant "' + word + '" ' + (isPalindrom ? '' : 'nu ') + 'este palindrom');
     </script>
 </body>
 

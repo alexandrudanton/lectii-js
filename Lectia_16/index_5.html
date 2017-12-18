@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 16 :: Problema 5</title>
+</head>
+
+<body>
+    <div id="container">
+    </div>
+    <div id="container2"></div>
+    <div id="container3">
+        <div>
+            <select></select>
+        </div>
+        <select></select>
+    </div>
+    <button onclick="loadNewDestinations();">show new destinations</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function loadNewDestinations() {
+            $('#container3 > select').html('');
+
+            newDestinations.map(destination => {
+                $('#container3 > select').append('<option value="">' + destination + '</option>');
+            });
+        }
+        let destinations = ['Peru', 'Fiji', 'Nepal', 'Samoa'];
+        let newDestinations = ['South Africa', 'Romania', 'Togo', 'China'];
+
+        let list = '<ul>';
+        destinations.map(destination => list += '<li>' + destination + '</li>');
+        list += '</ul>';
+
+        $('#container').append(list);
+
+        $('#container').prepend('<h1>Destinations</h1>');
+
+        destinations.map(destination => {
+            $('#container2').prepend('<div>' + destination + '</div>');
+        });
+
+        destinations.map(destination => {
+            $('#container3 select').append('<option value="">' + destination + '</option>');
+        });
+
+    </script>
+</body>
+
+</html>

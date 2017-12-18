@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 16 :: Problema 1</title>
+</head>
+
+<body>
+    <script>
+        /*
+            scrieti un script care sa transforme prima litera a fiecarui cuvant dintr-o
+            fraza in litera mare
+        */
+        let phrase = 'lorem ipsum dolor sit amet a';
+        const phraseLength = phrase.length;
+
+        // varianta 1
+        phrase = phrase[0].toUpperCase() + phrase.substring(1);
+        console.log(phrase);
+        for (let i = 0; i < phraseLength; i++) {
+            if (phrase[i] == ' ') {
+                phrase = phrase.substring(0, i + 1)
+                    + phrase[i + 1].toUpperCase()
+                    + (i + 2 < phraseLength ? phrase.substring(i + 2) : '');
+            }
+        }
+
+        console.log(phrase);
+
+        // varianta 2
+        phrase = 'lorem ipsum dolor sit amet a';
+        let newPhrase = phrase.replace(/\b[a-z]/g, char => char.toUpperCase());
+
+        console.log(newPhrase);
+
+        // varianta 3
+        phrase = 'lorem ipsum dolor sit amet a';
+        newPhrase = phrase.split(' ');
+        console.log(newPhrase);
+
+        //// varianta 3.1
+        // const len = newPhrase.length;
+        // for (let i = 0; i < len; i++) {
+        //     newPhrase[i] = newPhrase[i][0].toUpperCase() + newPhrase[i].substring(1);
+        // }
+        // newPhrase = newPhrase.join(' ');
+
+        //// varianta 3.2
+        // newPhrase = newPhrase.map(function (word) {
+        //     return word[0].toUpperCase() + word.substring(1);
+        // });
+        // newPhrase = newPhrase.join(' ');
+
+        // varianta 3.3
+        newPhrase = phrase
+            .split(' ')
+            .map(word => word[0].toUpperCase() + word.substring(1))
+            .join(' ');
+        console.log(newPhrase);
+    </script>
+</body>
+
+</html>

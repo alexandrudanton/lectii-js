@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 16 :: Problema 3</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Scrieti o functie care sa transforme un string din camel case in text normal. Optional, se poate trimite in functie un al doilea parametru care sa specifice caracterul care va delimita cuvintele.
+                uncamelize('helloWorld') ---> 'hello world'
+                uncamelize('helloWorld', '-') ---> 'hello-world'
+                uncamelize('helloWorld', '#') ---> 'hello#world'
+        */
+
+        function uncamelize(text, separator) {
+            if (typeof separator == 'undefined') {
+                separator = ' ';
+            }
+
+            return text
+                .replace(/([a-z])([A-Z])/g, '$1' + separator + '$2')
+                .toLowerCase();
+        }
+
+        function uncamelize2(text, separator = ' ') {
+            let textLength = text.length;
+
+            for (let i = 0; i < textLength; i++) {
+                if (text[i] == text[i].toUpperCase()) {
+                    text = text.substring(0, i)
+                        + separator
+                        + text[i].toLowerCase()
+                        + text.substring(i + 1);
+                }
+            }
+
+            return text;
+        }
+
+        let newPhrase = uncamelize('helloNewWorld', '#');
+        console.log(newPhrase);
+        console.log(uncamelize2('helloNewWorld', '#'));
+    </script>
+</body>
+
+</html>

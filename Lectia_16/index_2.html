@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 16 :: Problema 2</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Scrieti un script care sa converteasca un string in camelcase.
+                'JavaScript Exercises' ---> 'JavaScriptExercises'
+                'JavaScript exercises' ---> 'JavaScriptExercises'
+                'JavaScriptExercises' ---> 'JavaScriptExercises'
+        */
+
+        let phrase = 'JavaScript string exercises';
+        let newPhrase = phrase
+            .replace(/\b[a-z]/g, char => char.toUpperCase())
+            .replace(/\s/g, '');
+        console.log(phrase);
+        console.log(newPhrase);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            scrieti un script care sa transforme prima litera a fiecarui cuvant dintr-o
+            fraza in litera mare
+        */
+
+        // varianta scurta!! :-)
+        var phrase = "lorem ipsum dolor sit amet";
+        var newPhrase = phrase.replace(/\b[a-z]/g, char => char.toUpperCase());
+        console.log('Initial phrase: ' + phrase);
+        console.log('New phrase: ' + newPhrase);
+
+
+        // varianta cu array
+        var tmpPhrase = phrase.split(' ');
+        tmpPhrase = tmpPhrase.map(word => word[0].toUpperCase() + word.substring(1));
+        var newPhrase = tmpPhrase.join(' ');
+        console.log('Initial phrase: ' + phrase);
+        console.log('New phrase: ' + newPhrase);
+    </script>
+</body>
+
+</html>

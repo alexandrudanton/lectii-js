@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lectia 16 :: Problema 4</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Scrieti o functie care concateneaza un string de n ori. Folositi for si concatenare de string-uri.
+                repeat('Ha!') ---> 'Ha!'
+                repeat('Ha!', 2) ---> 'Ha!Ha!'
+                repeat('Ha!', 3) ---> 'Ha!Ha!Ha!'
+        */
+
+        function strRepeat(str, count = 1, separator) {
+            let newStr = '';
+            for (let i = 1; i <= count; i++) {
+                newStr += (newStr != '' ? separator : '') + str;
+            }
+            /*
+            // varianta 2
+            for (let i = 1; i <= count; i++) {
+                if (newStr != '') {
+                    newStr += separator;
+                }
+                newStr += str;
+            } */
+
+            return newStr;
+        }
+
+        let text = 'Ho!';
+        console.log(strRepeat(text, 3, ' '));
+        console.log(text.repeat(3));
+    </script>
+</body>
+
+</html>
