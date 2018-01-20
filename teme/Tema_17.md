@@ -13,8 +13,8 @@ Recomandarea mea este sa incercati sa adaugati fiecare celula din grid folosind 
 ```javascript
 $('.container').append('<div class="item">text</div>');
 ```
-- in locul cuvantului "text" trebuie sa concatenati la stringul dintre paranteze valoarea variabilei `i` folosita in `for`
-- incercati sa intuiti care este conditia folosita la celulele care sunt afisate pe doua coloane :-)
-- nu in ultimul rand trebuie scris css-ul pentru acest grid; nu sunt foarte importante font-ul, culorile, background-ul si border-ul, ci aranjarea celulelor in acelasi format cu cel din poza.
+- in locul cuvantului "text" trebuie sa includeti in stringul dintre paranteze valoarea variabilei `i` folosita in `for`
+- incercati sa intuiti care este conditia folosita la celulele care sunt afisate pe doua coloane :smiley:
+- nu in ultimul rand trebuie scris CSS-ul pentru acest grid; nu sunt foarte importante font-ul, culorile, background-ul si border-ul, ci aranjarea celulelor in acelasi format cu cel din poza.
 
-Spor! :-)
+Spor! :smiley:
