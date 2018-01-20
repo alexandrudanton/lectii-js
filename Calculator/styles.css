@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100');
+@import url('https://fonts.googleapis.com/css?family=Mukta+Malar:200');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: #222;
+    margin: 50px 100px;
+}
+
+h1 {
+    font-family: 'Ubuntu';
+    color: #F0F0F0;
+}
+
+.calculator {
+    width: 240px;
+    height: 420px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px 5px;
+}
+
+.calculator .display {
+    height: 120px;
+    padding-top: 4px;
+    background: #202020;
+}
+
+.calculator .display .history {
+    font-family: 'Mukta Malar';
+    font-size: 16px;
+    line-height: 20px;
+    height: 74px;
+    width: 100%;
+    text-align: right;
+    color: #CCC;
+    padding: 4px;
+    overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 5px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: #F88C2A;
+    border-radius: 5px;
+}
+
+.calculator .display input {
+    font-family: 'Source Sans Pro';
+    width: 100%;
+    padding: 2px;
+    height: 40px;
+    font-size: 28px;
+    text-align: right;
+    color: #FAFAFA;
+    background: transparent;
+    border: 0px;
+}
+
+.calculator .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 300px;
+}
+
+.calculator .buttons .button {
+    background: #D2D3D5;
+    border-right: 1px solid #979799;
+    border-bottom: 1px solid #979799;
+    font-family: 'Roboto Mono';
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator .buttons .button.large {
+    grid-column: span 2;
+}
+
+.calculator .buttons .button.orange {
+    background: #F88C2A;
+    color: #FEFEFE;
+}

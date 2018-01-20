@@ -1,0 +1,15 @@
+.container {
+    border: 5px solid #00F;
+    width: 75%;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.container .item {
+    border: 1px solid #0F0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
