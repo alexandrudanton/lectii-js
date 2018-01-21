@@ -15,7 +15,8 @@ body {
 
 h1 {
     font-family: 'Ubuntu';
-    color: #F0F0F0;
+    color: #bada55;
+    /* color: #f0f0f0; */
 }
 
 .calculator {
@@ -37,7 +38,7 @@ h1 {
     height: 74px;
     width: 100%;
     text-align: right;
-    color: #CCC;
+    color: #bada55;
     padding: 4px;
     overflow-y: scroll;
 }
@@ -52,7 +53,7 @@ h1 {
 }
 
 .scroll::-webkit-scrollbar-thumb {
-    background: #F88C2A;
+    background: #f88c2a;
     border-radius: 5px;
 }
 
@@ -63,7 +64,7 @@ h1 {
     height: 40px;
     font-size: 28px;
     text-align: right;
-    color: #FAFAFA;
+    color: #fafafa;
     background: transparent;
     border: 0px;
 }
@@ -75,13 +76,13 @@ h1 {
 }
 
 .calculator .buttons .button {
-    background: #D2D3D5;
+    background: #d2d3d5;
     border-right: 1px solid #979799;
     border-bottom: 1px solid #979799;
     font-family: 'Roboto Mono';
     font-size: 28px;
     cursor: pointer;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
 }
@@ -91,6 +92,6 @@ h1 {
 }
 
 .calculator .buttons .button.orange {
-    background: #F88C2A;
-    color: #FEFEFE;
+    background: #f88c2a;
+    color: #fefefe;
 }
