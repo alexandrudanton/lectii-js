@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Grid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes/solarized-light.css">
+</head>
+<body>
+    <h1>CSS GRID</h1>
+    <main class="container">
+        <h2>CSS Variables & calc() function</h2>
+        <div class="container__item code html no-auto">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. &lt;strong&gt;Duis eget lobortis mauris.&lt;/strong&gt; Curabitur quis fringilla massa. Cras egestas arcu arcu.&lt;/p&gt;
+&lt;div&gt;width: 50%;&lt;/div&gt;
+&lt;section&gt;width: 50% - 100px&lt;/section&gt;
+        </div>
+        <div class="subcontainer">
+            <div class="subcontainer__item code css">
+                /* declaram variabilele */
+                :root {
+                    --green: #bada55;
+                    --my-border: 1px solid #aaa;
+                    --my-background: var(--green);
+                }
+
+                p {
+                    /* folosim variabila --green */
+                    color: var(--green);
+                    padding: 20px;
+                    /* folosim variabila --my-border */
+                    border: var(--my-border);
+                    line-height: 2;
+                }
+
+                strong {
+                    color: #000;
+                    /* folosim variabila --my-background */
+                    background: var(--my-background);
+                    padding: 4px 10px;
+                }
+
+                div {
+                    width: 50%;
+                    background: var(--lime-green);
+                    line-height: 30px;
+                    text-align: center;
+                }
+
+                section {
+                    width: calc(50% - 100px);
+                    background: var(--lime-green);
+                    margin-top: 20px;
+                    line-height: 30px;
+                    text-align: center;
+                }
+
+            </div>
+            <div class="subcontainer__item result css-vars">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Duis eget lobortis mauris.</strong> Curabitur quis fringilla massa. Cras egestas arcu arcu.</p>
+                <div>width: 50%;</div>
+                <section>width: 50% - 100px</section>
+            </div>
+        </div>
+        <h2>grid-gap | grid-template-columns</h2>
+        <div class="container__item code html"></div>
+        <div class="subcontainer">
+            <div class="subcontainer__item code css">
+                .example-1 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: 50px 50px 50px 50px;
+                    /* or
+                    grid-template-columns: repeat(4, 50px);
+                    */
+                }
+            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 1</h3>
+                <div data-no-of-elements="10" class="example example-1"></div>
+                <legend><code>grid-template-columns</code> ne ajuta sa setam numarul si latimea coloanelor din gridul nostru;<br><br>setand latimea pentru fiecare coloana, grid-ul stie automat si cate coloane vor fi afisate</legend>
+            </div>
+
+            <div class="subcontainer__item code css">
+                .example-2 {
+                    display: grid;
+                    grid-gap: 20px 50px;
+                    grid-template-columns: 1fr 3fr 1fr 3fr;
+                    /* or
+                    grid-template-columns: repeat(2, 1fr 3fr);
+                    */
+                }
+            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 2</h3>
+                <div data-no-of-elements="10" class="example example-2"></div>
+                <legend>unitatile de masura pe care le putem folosi pentru a seta latimea coloanelor din grid sunt aceleasi pe care le putem folosi cu <code>width</code> si in plus putem folosi <code>fr</code><br><br>
+                1 fr = (latimea gridului - suma latimilor coloanelor cu latime fixa) / numarul de unitati fr folosite in <code>grid-template-columns</code></legend>
+            </div>
+
+            <div class="subcontainer__item code css">
+                .example-3 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: 50px auto;
+                }
+            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 3</h3>
+                <div data-no-of-elements="10" class="example example-3"></div>
+                <legend>
+                    latimea <code>auto</code> pentru a doua coloana lateste coloana pe tot spatiul ramas liber
+                </legend>
+                <small>resize the browser</small>
+            </div>
+
+            <div class="subcontainer__item code css">
+                .example-4 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: 50px auto 100px;
+                }
+            </div>
+            <div class="subcontainer__item result">
+            <h3>Example 4</h3>
+            <div data-no-of-elements="10" class="example example-4"></div>
+            <small>resize the browser</small>
+        </div>
+        </div>
+
+        <h2>grid-template-columns | grid-template-rows</h2>
+        <div class="container__item code html"></div>
+        <div class="subcontainer">
+            <div class="subcontainer__item code css">
+                .example-5 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: 50px 75px 100px;
+                    grid-template-rows: 50px 100px 150px;
+                }
+            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 5</h3>
+                <div data-no-of-elements="10" class="example example-5"></div>
+                <legend>folosind <code>grid-template-rows</code> putem sa specificam inaltimea fiecarei linii din grid; liniile pentru care nu se specifica inaltimea vor avea o inaltime auto conform cu continutul celulelor</legend>
+            </div>
+        </div>
+
+        <h2>grid-auto-rows</h2>
+        <div class="container__item code html"></div>
+        <div class="subcontainer">
+            <div class="subcontainer__item code css">
+                .example-6 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: repeat(2, 100px);
+                    grid-template-rows: 50px 75px;
+                    grid-auto-rows: 150px;
+                }
+            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 6</h3>
+                <div data-no-of-elements="10" class="example example-6"></div>
+                <legend>pentru a seta inaltimea pentru liniile care nu sunt "acoperite" de <code>grid-template-rows</code> se foloseste <code>grid-auto-rows</code></legend>
+            </div>
+        </div>
+
+        <h2>grid-auto-flow</h2>
+        <div class="container__item code html"></div>
+        <div class="subcontainer">
+            <div class="subcontainer__item code css">
+                .example-7 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: 100px 50px;
+                    grid-auto-flow: column;
+                }
+            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 7</h3>
+                <div data-no-of-elements="10" class="example example-7"></div>
+                <legend>div-urile de la 3 la 10 ar fi trebuit sa fie afisate pe 2 coloane sub primele 2 div-uri, dar datorita <code>grid-auto-flow: column;</code> ele sunt afisate pe aceeasi linie cu primele doua</legend>
+            </div>
+        </div>
+        <h2>grid-column</h2>
+        <div class="container__item code html"></div>
+        <div class="subcontainer">
+            <div class="subcontainer__item code css">
+                .example-8 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: 100px 200px 50px;
+                }
+
+                .example-8 .item:nth-child(4n) {
+                    grid-column: span 3;
+                }            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 8</h3>
+                <div data-no-of-elements="11" class="example example-8"></div>
+                <legend>
+                    pentru a specifica numarul de coloane peste care sa se intinda o celula a gridului folosim <code>grid-column: span [nr de coloane]</code>
+                </legend>
+            </div>
+        </div>
+
+        <h2>grid-column-start, grid-column-end | grid-row-start, grid-row-end</h2>
+        <div class="container__item code html"></div>
+        <div class="subcontainer">
+            <div class="subcontainer__item code css">
+                .example-9 {
+                    display: grid;
+                    grid-gap: 20px;
+                    grid-template-columns: repeat(10, 50px);
+                }
+
+                .example-9 .item:nth-child(2) {
+                    grid-column-start: 2;
+                    grid-column-end: 4;
+                }
+
+                .example-9 .item:nth-child(4) {
+                    grid-column-end: span 3;
+                }
+
+                .example-9 .item:nth-child(7) {
+                    grid-column-start: 10;
+                    grid-row-start: 1;
+                    grid-row-end: 3;
+                }
+
+                .example-9 .item:nth-child(18) {
+                    grid-column-end: span 3;
+                    grid-row-end: span 4;
+                }
+
+                .example-9 .item:nth-child(27) {
+                    grid-column-start: 6;
+                    grid-column-end: -1;
+                }
+
+                .example-9 .item:nth-child(32) {
+                    grid-column-start: 8;
+                    grid-column-end: -1;
+                    grid-row-start: 5;
+                    grid-row-end: span 3;
+                }
+
+                .example-9 .item:nth-child(44) {
+                    grid-column-start: 1;
+                    grid-column-end: -1;
+                }
+            </div>
+            <div class="subcontainer__item result">
+                <h3>Example 9</h3>
+                <div data-no-of-elements="44" class="example example-9"></div>
+                <legend>
+                    o alternativa mult mai flexibila a <code>grid-column: span [nr de coloane]</code> este:<br><br>
+                    <code>grid-column-start</code> si <code>grid-column-end</code> pentru intinderea celulelor pe coloane<br>
+                    <code>grid-row-start</code> si <code>grid-row-end</code> pentru intinderea celulelor pe linii<br>
+                </legend>
+            </div>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
