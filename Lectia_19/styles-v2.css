@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: #999;
+}
+
+.container {
+    margin: 100px auto 0 auto;
+    width: 75vw;
+    height: 75vh;
+    border: 1px solid #bada55;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    box-shadow: 0 0 50px #00000088;
+}
+
+.display {
+    position: relative;
+}
+
+.square {
+    height: 100px;
+    width: 100px;
+    background: #bada55;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    transition: 0.5s ease;
+}
+
+.controller {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background: #aaa;
+}
+
+.buttons {
+    display: grid;
+    width: 75%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.button {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    font-size: 2vw;
+    background: #dadada;
+    color: #999;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 25% 10%;
+}
+
+.button--up {
+    box-shadow: 4px 4px 4px #00000044;
+}
+
+.button--down {
+    margin: 2px -2px -2px 2px;
+    box-shadow: 2px 2px 2px #00000044;
+}
+
+.button:hover {
+    background: #bada55;
+}
+
+.button .fas:not(.fa-redo) {
+    transform: rotate(calc(var(--degree) * 1deg));
+    /* transform: rotate(calc(var(--top) * 90deg + var(--left) * -1 * 45deg)); */
+}

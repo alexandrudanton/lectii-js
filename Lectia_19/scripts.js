@@ -12,26 +12,10 @@ const createClickEvents = () => {
 };
 
 const moveSquare = direction => {
-    // const functionName = direction.replace(/^[a-z]/, letter =>
-    //     letter.toUpperCase()
-    // );
-    // new Function('return move' + functionName + '()')();
-    switch (direction) {
-        case 'up':
-            moveUp();
-            break;
-        case 'left':
-            moveLeft();
-            break;
-        case 'right':
-            moveRight();
-            break;
-        case 'down':
-            moveDown();
-            break;
-        default:
-            break;
-    }
+    const functionName = direction
+        .replace(/^[a-z]|(\-[a-z])/g, letter => letter.toUpperCase())
+        .replace('-', '');
+    new Function(`return move${functionName}()`)();
 };
 
 const moveUp = () => {
