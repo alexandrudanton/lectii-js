@@ -15,7 +15,9 @@ body {
     border: 1px solid #bada55;
     display: grid;
     grid-template-columns: 3fr 1fr;
-    box-shadow: 0 0 50px #00000088;
+    box-shadow: 0 0 100px #00000088;
+    -moz-box-shadow: 0 0 100px #00000088;
+    -webkit-box-shadow: 0 0 100px #00000088;
 }
 
 .display {
@@ -25,7 +27,6 @@ body {
 .square {
     height: 100px;
     width: 100px;
-    /* background: #bada5544; */
     position: absolute;
     top: 100px;
     left: 100px;
@@ -70,15 +71,20 @@ body {
 
 .button--up {
     box-shadow: 4px 4px 4px #00000044;
+    -moz-box-shadow: 4px 4px 4px #00000044;
+    -webkit-box-shadow: 4px 4px 4px #00000044;
 }
 
 .button--down {
     margin: 2px -2px -2px 2px;
     box-shadow: 2px 2px 2px #00000044;
+    -moz-box-shadow: 2px 2px 2px #00000044;
+    -webkit-box-shadow: 2px 2px 2px #00000044;
 }
 
 .button:hover {
     background: #bada55;
+    color: #efefef;
 }
 
 .button i:not(.fa-redo) {

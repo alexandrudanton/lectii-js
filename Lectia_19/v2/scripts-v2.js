@@ -3,6 +3,9 @@ $(() => {
     addClickEvents();
 });
 
+// salvam ultima directie (in grade) in care s-a deplasat racheta
+var lastDegree = null;
+
 const createControllerButtons = () => {
     /*
         construim un array in care fiecare element contine un array format din:
@@ -15,13 +18,13 @@ const createControllerButtons = () => {
         0 inseamna nu se modifica acea coordonata
     */
     const buttonsData = [
-        [-1, -1, -45], // up-left
+        [-1, -1, 315], // up-left
         [-1, 0, 0], // up
         [-1, 1, 45], // up-right
-        [0, -1, -90], // left
+        [0, -1, 270], // left
         [0, 0, 0], // center
         [0, 1, 90], // right
-        [1, -1, -135], // down-left
+        [1, -1, 225], // down-left
         [1, 0, 180], // down
         [1, 1, 135] // down-right
     ];
@@ -57,7 +60,8 @@ const createControllerButtons = () => {
 const addClickEvents = () => {
     // in momentul in care apasam pe butonul mouse-ului se inlocuieste clasa "button--up" cu "button--down"
     $('.controller .button').mousedown(function() {
-        $(this).toggleClass('button--up button--down');
+        $(this).removeClass('button--up');
+        $(this).addClass('button--down');
     });
 
     $('.controller .button').click(function() {
@@ -72,13 +76,9 @@ const addClickEvents = () => {
 
     // in momentul in care ridicam degetul de pe butonul mouse-ului se inlocuieste clasa "button--down" cu "button--up"
     $('.controller .button').mouseup(function() {
-        $(this).toggleClass('button--up button--down');
+        $(this).removeClass('button--down');
+        $(this).addClass('button--up');
     });
-
-    /*
-        codul pentru cele doua actiuni ("mousedown" si "mouseup") este identic pentru functia toggleClass stie sa verifice
-        care dintre cele doua clase exista setate pe elementul nostru, sa o stearga si pe urma sa o adauge pe cealalta
-    */
 };
 
 const moveSquare = (stepTop, stepLeft, degree) => {
@@ -124,7 +124,25 @@ const resetPosition = () => {
 
 const pointAndMoveSpaceShuttle = (newTop, newLeft, degree) => {
     pointSpaceShuttleTo(newTop, newLeft, degree);
-    setTimeout(() => moveAt(newTop, newLeft), 200);
+
+    /*
+        daca noua directie difera de ultima directie in care s-a deplasat racheta atunci rotim racheta
+        si dupa ce s-a incheiat rotatia o deplasam in nou directie
+    */
+    if (lastDegree != degree) {
+        $('.fa-space-shuttle').bind(
+            'transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd',
+            () => moveAt(newTop, newLeft)
+        );
+        lastDegree = degree;
+        return;
+    }
+
+    /*
+        daca noua directie este aceeasi cu vechea directie (executia scriptului nu a intrat in IF)
+        atunci doar mutam racheta in aceeasi directie
+    */
+    moveAt(newTop, newLeft);
 };
 
 /*
