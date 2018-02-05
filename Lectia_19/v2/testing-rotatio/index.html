@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <style>
+        body {
+            background: #999;
+        }
+
+        .fa-space-shuttle {
+            font-size: 50px;
+            color: #bada55;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <i class="fas fa-space-shuttle"></i>
+    </div>
+    <div class="buttons">
+        <button class="button" data-degree="-45">-45 deg</button>
+        <button class="button" data-degree="45">+ 45 deg</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        let currentDegrees = 0;
+
+        $(() => {
+            $('.button').click(function () {
+                let degree = $(this).data('degree');
+                currentDegrees += degree;
+                $('.fa-space-shuttle').css({
+                    transform: `rotate(${currentDegrees}deg)`
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,9 +1,9 @@
 $(() => {
-    buildControllerButtons();
+    createControllerButtons();
     addClickEvents();
 });
 
-const buildControllerButtons = () => {
+const createControllerButtons = () => {
     /*
         construim un array in care fiecare element contine un array format din:
             - directia in care se muta patratul pe verticala
@@ -31,7 +31,7 @@ const buildControllerButtons = () => {
     */
     buttonsData.map(item => {
         // expresia de mai jos in variabilele "top", "left", "degree" valorile din fiecare element din array-ul "buttonsData"
-        let [top, left, degree] = item;
+        const [top, left, degree] = item;
 
         /*
             - adaugam la div-ul cu clasa "buttons" noile div-uri
@@ -44,9 +44,11 @@ const buildControllerButtons = () => {
         */
         $('.controller .buttons').append(
             `<div class="button button--up" data-step-top="${top}" data-step-left="${left}">
-                <i class="fas ${
-                    top + left + top * left == 0 ? 'fa-redo' : 'fa-chevron-up'
-                }" style="--degree: ${degree};"></i>
+                <i class="${
+                    top + left + top * left == 0
+                        ? 'fas fa-redo'
+                        : 'far fa-hand-point-up'
+                }" style="--degree: ${degree};" data-degree="${degree}"></i>
             </div>`
         );
     });
@@ -59,7 +61,13 @@ const addClickEvents = () => {
     });
 
     $('.controller .button').click(function() {
-        moveSquare($(this).data('step-top'), $(this).data('step-left'));
+        moveSquare(
+            $(this).data('step-top'),
+            $(this).data('step-left'),
+            $(this)
+                .find('i')
+                .data('degree')
+        );
     });
 
     // in momentul in care ridicam degetul de pe butonul mouse-ului se inlocuieste clasa "button--down" cu "button--up"
@@ -73,7 +81,7 @@ const addClickEvents = () => {
     */
 };
 
-const moveSquare = (stepTop, stepLeft) => {
+const moveSquare = (stepTop, stepLeft, degree) => {
     /*
         daca stepTop si stepLeft sunt ambele egale cu 0 atunci inseamna ca s-a apasat butonul din centru, cel care
         reseteaza pozitia patratului nostru
@@ -83,22 +91,22 @@ const moveSquare = (stepTop, stepLeft) => {
         return;
     }
 
-    let step = 50;
+    const step = 50;
     // pozitia curenta a patratului
-    let currentTop = parseInt($('.square').css('top'));
-    let currentLeft = parseInt($('.square').css('left'));
+    const currentTop = parseInt($('.square').css('top'));
+    const currentLeft = parseInt($('.square').css('left'));
 
     // calculam urmatoarea pozitie a patratului in functie de directia selectata
-    let newTop = currentTop + step * stepTop;
-    let newLeft = currentLeft + step * stepLeft;
+    const newTop = currentTop + step * stepTop;
+    const newLeft = currentLeft + step * stepLeft;
 
-    // verificam daca patratul poate fi mutat la noua pozitie; daca nu se poate iesim din functie folosind "return"
+    // verificam daca patratul poate fi mutat la noua pozitie; daca nu se poate, iesim din functie folosind "return"
     if (!itCanMoveTo(newTop, newLeft)) {
         return;
     }
 
     // mutam patratul la noua pozitie
-    moveAt(newTop, newLeft);
+    pointAndMoveSpaceShuttle(newTop, newLeft, degree);
 };
 
 const moveAt = (top, left) => {
@@ -109,9 +117,40 @@ const moveAt = (top, left) => {
 };
 
 const resetPosition = () => {
-    let newTop = Math.round(parseInt($('.display').css('height')) / 2 - 50);
-    let newLeft = Math.round(parseInt($('.display').css('width')) / 2 - 50);
-    moveAt(newTop, newLeft);
+    const newTop = Math.round(parseInt($('.display').css('height')) / 2 - 50);
+    const newLeft = Math.round(parseInt($('.display').css('width')) / 2 - 50);
+    pointAndMoveSpaceShuttle(newTop, newLeft, null);
+};
+
+const pointAndMoveSpaceShuttle = (newTop, newLeft, degree) => {
+    pointSpaceShuttleTo(newTop, newLeft, degree);
+    setTimeout(() => moveAt(newTop, newLeft), 200);
+};
+
+/*
+    !!! AND HERE COMES THE MAGIC !!! :-D
+*/
+const pointSpaceShuttleTo = (newTop, newLeft, degree) => {
+    let angle;
+
+    if (degree === null) {
+        const top = parseInt($('.square').css('top'));
+        const left = parseInt($('.square').css('left'));
+
+        const angleSine =
+            (newLeft - left) /
+            Math.sqrt((newLeft - left) ** 2 + (newTop - top) ** 2);
+
+        const radians = Math.asin(angleSine);
+
+        angle = radians * 57.295779513;
+    } else {
+        angle = degree - 90;
+    }
+
+    $('.fa-space-shuttle').css({
+        transform: `rotate(${angle}deg)`
+    });
 };
 
 const itCanMoveTo = (top, left) => {
@@ -119,17 +158,13 @@ const itCanMoveTo = (top, left) => {
         return false;
     }
 
-    let squareWidth = parseInt($('.square').css('width'));
-    let squareHeight = parseInt($('.square').css('height'));
-    let displayWidth = parseInt($('.display').css('width'));
-    let displayHeight = parseInt($('.display').css('height'));
+    const squareWidth = parseInt($('.square').css('width'));
+    const squareHeight = parseInt($('.square').css('height'));
+    const displayWidth = parseInt($('.display').css('width'));
+    const displayHeight = parseInt($('.display').css('height'));
 
-    if (
-        top + squareHeight > displayHeight ||
-        left + squareWidth > displayWidth
-    ) {
-        return false;
-    }
-
-    return true;
+    return (
+        top + squareHeight <= displayHeight &&
+        left + squareWidth <= displayWidth
+    );
 };

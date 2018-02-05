@@ -25,11 +25,21 @@ body {
 .square {
     height: 100px;
     width: 100px;
-    background: #bada55;
+    /* background: #bada5544; */
     position: absolute;
     top: 100px;
     left: 100px;
     transition: 0.5s ease;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.square i {
+    color: #bada55;
+    font-size: 64px;
+    text-shadow: 4px 4px 10px #00000044;
+    transition: all 0.75s;
 }
 
 .controller {
@@ -43,7 +53,7 @@ body {
     display: grid;
     width: 75%;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 15px;
 }
 
 .button {
@@ -71,7 +81,7 @@ body {
     background: #bada55;
 }
 
-.button .fas:not(.fa-redo) {
+.button i:not(.fa-redo) {
     transform: rotate(calc(var(--degree) * 1deg));
     /* transform: rotate(calc(var(--top) * 90deg + var(--left) * -1 * 45deg)); */
 }
