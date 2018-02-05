@@ -85,6 +85,7 @@ body {
 .button:hover {
     background: #bada55;
     color: #efefef;
+    text-shadow: 2px 2px 2px #00000044;
 }
 
 .button i:not(.fa-redo) {
