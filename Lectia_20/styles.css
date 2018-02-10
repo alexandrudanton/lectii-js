@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette:100');
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: #999;
+}
+
+.container {
+    background: #bada55;
+    margin: 50px auto;
+    padding: 10px;
+    width: 75%;
+    /* border: 2px solid #bada55; */
+    border-radius: 10px;
+    box-shadow: 0 0 40px #00000088;
+    -moz-box-shadow: 0 0 40px #00000088;
+    -webkit-box-shadow: 0 0 40px #00000088;
+}
+
+.form-field {
+    text-align: center;
+    padding: 20px;
+}
+
+.form-field input {
+    /* border: 1px solid #999; */
+    border: 0;
+    font-size: 24px;
+    color: #666;
+    padding: 10px 20px;
+    width: 75%;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 4px 4px 4px #00000044;
+    -moz-box-shadow: 4px 4px 4px #00000044;
+    -webkit-box-shadow: 4px 4px 4px #00000044;
+}
+
+.list-container {
+    /* background: #fff; */
+    padding: 0 20px;
+}
+
+.list-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-container ul li {
+    font-family: 'Courgette';
+    border: 1px solid #dadada;
+    padding: 10px 20px;
+    margin: 10px;
+    background: #efefef;
+}
+
+.highlight {
+    background: #ffc600;
+}
