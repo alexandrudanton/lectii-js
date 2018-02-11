@@ -5,6 +5,7 @@
 * https://github.com/bpesquet/thejsway
 * https://docs.emmet.io/cheat-sheet/
 * https://github.com/zeeshanu/learn-regex
+* http://youmightnotneedjquery.com/
 
 # Link-uri CDN
 
@@ -37,5 +38,5 @@ _Optional theme_
 **Latest compiled and minified JavaScript**
 
 ```javascript
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />;
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
 ```
