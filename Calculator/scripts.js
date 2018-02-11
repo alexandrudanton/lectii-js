@@ -2,16 +2,15 @@ $(function() {
     createButtonEvents();
 });
 
-function createButtonEvents() {
+const createButtonEvents = () => {
     $('.button').map((index, element) => {
         $(element).click(function() {
             buttonClicked($(this));
         });
     });
-}
+};
 
-function buttonClicked(sender) {
-    console.log(sender.text());
+const buttonClicked = sender => {
     let buttonText = sender.text();
 
     if (
@@ -30,28 +29,44 @@ function buttonClicked(sender) {
     if ($.inArray(buttonText, ['+', '-', '×', '÷']) != -1) {
         addOperandToQueue(buttonText);
     }
-}
 
-function appendToDisplay(char) {
+    if (buttonText == '=') {
+        getResult();
+    }
+};
+
+const appendToDisplay = char => {
     $('.input').append(char);
-}
+};
 
-function inDisplay(char) {
+const inDisplay = char => {
     let displayText = $('.input').text();
     if (displayText.indexOf(char) != -1) {
         return true;
     }
 
     return false;
-}
+};
 
-function removeLastCharFromDisplay() {
+const removeLastCharFromDisplay = () => {
     let displayText = $('.input').text();
     let newText = displayText.substring(0, displayText.length - 1);
     $('.input').text(newText);
-}
+};
 
-function addOperandToQueue(operator) {
+const addOperandToQueue = operator => {
     $('.queue').append($('.input').text() + operator);
     $('.input').text('');
-}
+};
+
+const getResult = () => {
+    $('.queue').append($('.input').text() + '=');
+    const expression = $('.queue')
+        .html()
+        .replace(/×/g, '*')
+        .replace(/÷/g, '/')
+        .replace(/=/g, '');
+    console.log(expression);
+
+    $('.input').text(eval(expression));
+};
