@@ -7,7 +7,7 @@ npm install
 npm start
 ```
 
-In browser deschideti `localhost:3000/index.html`. Dupa deschiderea acestei pagini veti fi intrebati daca acceptati ca browserul sa va acceseze microfonul. Acceptati :-).
+In browser deschideti `localhost:3000/index.html`. Dupa deschiderea acestei pagini veti fi intrebati daca acceptati ca browserul sa va acceseze microfonul. Acceptati 😃.
 
 Comenzile pentru controlarea rachetei sunt:
 
@@ -16,4 +16,4 @@ Comenzile pentru controlarea rachetei sunt:
 * go down
 * go left
 
-ENJOY! :-D
+ENJOY! 😃
