@@ -1,38 +1,40 @@
 $(() => {
     createControllerButtons();
     addClickEvents();
+
+    createSpeechListener();
 });
 
 // salvam ultima directie (in grade) in care s-a deplasat racheta
 var lastDegree = null;
 
+/*
+    construim un array in care fiecare element contine un array format din:
+        - directia in care se muta patratul pe verticala
+        - directia in care se muta patratul pe orizontala
+        - gradele cu care se roteste sageata de pe buton din css (toate butoanele au initial aceeasi sageata)
+
+    -1 inseamna sus, respectiv stanga
+    1 inseamna jos, respectiv dreapta
+    0 inseamna nu se modifica acea coordonata
+*/
+const buttonsData = {
+    'up-left': [-1, -1, 315], // up-left
+    up: [-1, 0, 0], // up
+    'up-right': [-1, 1, 45], // up-right
+    left: [0, -1, 270], // left
+    center: [0, 0, 0], // center
+    right: [0, 1, 90], // right
+    'down-left': [1, -1, 225], // down-left
+    down: [1, 0, 180], // down
+    'down-right': [1, 1, 135] // down-right
+};
+
 const createControllerButtons = () => {
-    /*
-        construim un array in care fiecare element contine un array format din:
-            - directia in care se muta patratul pe verticala
-            - directia in care se muta patratul pe orizontala
-            - gradele cu care se roteste sageata de pe buton din css (toate butoanele au initial aceeasi sageata)
-
-        -1 inseamna sus, respectiv stanga
-        1 inseamna jos, respectiv dreapta
-        0 inseamna nu se modifica acea coordonata
-    */
-    const buttonsData = [
-        [-1, -1, 315], // up-left
-        [-1, 0, 0], // up
-        [-1, 1, 45], // up-right
-        [0, -1, 270], // left
-        [0, 0, 0], // center
-        [0, 1, 90], // right
-        [1, -1, 225], // down-left
-        [1, 0, 180], // down
-        [1, 1, 135] // down-right
-    ];
-
     /*
         parcurgem array-ul de mai sus si construim butoanele (ele initial nu exista in HTML)
     */
-    buttonsData.map(item => {
+    Object.values(buttonsData).map(item => {
         // expresia de mai jos in variabilele "top", "left", "degree" valorile din fiecare element din array-ul "buttonsData"
         const [top, left, degree] = item;
 
@@ -185,4 +187,42 @@ const itCanMoveTo = (top, left) => {
         top + squareHeight <= displayHeight &&
         left + squareWidth <= displayWidth
     );
+};
+
+const createSpeechListener = () => {
+    window.SpeechRecognition =
+        window.SpeechRecognition || webkitSpeechRecognition;
+
+    const recognition = new SpeechRecognition();
+
+    recognition.addEventListener('result', e => {
+        const transcript = Array.from(e.results)
+            .map(result => result[0])
+            .map(result => result.transcript)
+            .join('');
+
+        if (e.results[0].isFinal) {
+            executeCommand(transcript);
+        }
+    });
+
+    recognition.addEventListener('end', recognition.start);
+    recognition.start();
+};
+
+const executeCommand = command => {
+    command = command.replace('go', '').trim();
+    command = fixWrongTranscripts(command);
+    console.log(command);
+
+    if ($.inArray(command, ['up', 'right', 'down', 'left']) === -1) {
+        return;
+    }
+
+    console.log(buttonsData[command]);
+    moveSquare(...buttonsData[command]);
+};
+
+const fixWrongTranscripts = transcript => {
+    return transcript.replace('app', 'up');
 };
