@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url('https://fonts.googleapis.com/css?family=Kavivanar');
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: #ffc600;
+}
+
+h1 {
+    color: #666;
+    text-shadow: 2px 2px 2px #fff;
+    font-family: 'Lobster';
+    font-size: 3vw;
+}
+
+main {
+    margin: 20px auto;
+    width: 75%;
+    line-height: 1.5;
+    font-family: 'Kavivanar';
+    display: grid;
+    grid-gap: 30px;
+}
+
+section {
+    background: #efefef;
+    box-shadow: 0px 0px 25px #00000088;
+    -moz-box-shadow: 0px 0px 25px #00000088;
+    -webkit-box-shadow: 0px 0px 25px #00000088;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 2vw;
+    padding: 10px 20px;
+    background: #dadada;
+    display: grid;
+    grid-template-columns: auto 3vw;
+}
+
+.title .fas {
+    color: #fff;
+    font-size: 3vw;
+    text-shadow: 2px 2px 2px #00000044;
+    display: none;
+}
+
+.title:hover {
+    background: #bada55;
+    cursor: pointer;
+}
+
+.title:hover .fas {
+    display: block;
+}
+
+.description {
+    font-family: 'Dancing Script';
+    font-size: 2vw;
+    text-align: justify;
+    padding: 10px 20px;
+    display: none;
+}
