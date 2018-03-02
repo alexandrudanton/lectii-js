@@ -55,28 +55,39 @@ const init = () => {
     // adaugam board-ul in board-container
     $('.board-container').html('<section class="board"></section>');
 
-    // setam grid-template-columns si variabila css --cols-number
-    setBoardNumberOfColumns(cols);
+    // setam grid-template-columns, grid-template-rows si variabila css --cols-number
+    setBoardDimensions(cols, rows);
 
     // asezam cartile
     buildCardsGrid();
+
+    setClickEvents();
 };
 
 const buildCardsGrid = () => {
     const numberOfCards = cols * rows;
-    for (let i = 0; i < numberOfCards; i++) {
-        $('.board').append(
-            `<div class="cards on"><i class="fab fa-android"></i></div>`
-        );
-    }
+    const newCards = createRandomPairs(numberOfCards);
+
+    newCards.map(icon => {
+        $('.board').append(`<div class="cards"><i class="${icon}"></i></div>`);
+    });
 };
 
-const setBoardNumberOfColumns = cols => {
-    // setam variabile css --cols-number pe body pentru a putea fi accesata din orice clasa css
+const createRandomPairs = numberOfCards => {
+    let tmpCards = shuffleArray(images, numberOfCards / 2);
+    let newCards = tmpCards.concat(tmpCards);
+    newCards = shuffleArray(newCards, numberOfCards);
+
+    return newCards;
+};
+
+const setBoardDimensions = (cols, rows) => {
+    // setam variabila css --cols-number pe body pentru a putea fi accesata din orice clasa css
     document.body.style.setProperty('--cols-number', cols);
 
     $('.board').css({
-        gridTemplateColumns: `repeat(${cols}, 1fr)`
+        gridTemplateColumns: `repeat(${cols}, 1fr)`,
+        gridTemplateRows: `repeat(${rows}, 1fr)`
     });
 };
 
@@ -108,5 +119,12 @@ const shuffleArray = (cards, length) => {
         // am pus initial nr de elemente ale array-ului imgs
         noOfCards--;
     }
+
     return newImages;
+};
+
+const setClickEvents = () => {
+    $('.cards').click(function() {
+        $(this).addClass('on');
+    });
 };
