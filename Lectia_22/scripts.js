@@ -50,6 +50,7 @@ const images = [
     'fas fa-subway',
     'far fa-thumbs-up'
 ];
+let player = 'one';
 
 const init = () => {
     // adaugam board-ul in board-container
@@ -62,6 +63,8 @@ const init = () => {
     buildCardsGrid();
 
     setClickEvents();
+
+    $(`.player.${player}`).addClass('active');
 };
 
 const buildCardsGrid = () => {
@@ -125,6 +128,52 @@ const shuffleArray = (cards, length) => {
 
 const setClickEvents = () => {
     $('.cards').click(function() {
+        if ($('.cards.on').length == 2) {
+            return;
+        }
+
         $(this).addClass('on');
+
+        if ($('.cards.on').length == 2) {
+            checkPairs();
+        }
     });
+};
+
+const checkPairs = () => {
+    [firstCard, secondCard] = $('.cards.on');
+    if ($(firstCard).html() == $(secondCard).html()) {
+        removePair();
+        return;
+    }
+
+    closePair();
+};
+
+const removePair = () => {
+    setTimeout(() => {
+        $('.on')
+            .addClass('removed')
+            .removeClass('on');
+        setScore();
+    }, 500);
+};
+
+const setScore = () => {
+    const scoreElement = $('.player.active .score');
+    let score = parseInt(scoreElement.text());
+    scoreElement.text(score + 1);
+};
+
+const closePair = () => {
+    setTimeout(() => {
+        $('.on').removeClass('on');
+        selectPlayer();
+    }, 1000);
+};
+
+const selectPlayer = () => {
+    $(`.player.${player}`).removeClass('active');
+    player = player === 'one' ? 'two' : 'one';
+    $(`.player.${player}`).addClass('active');
 };
