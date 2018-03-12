@@ -50,7 +50,14 @@ const images = [
     'fas fa-subway',
     'far fa-thumbs-up'
 ];
-let player = 'one';
+
+const random = (min, max) => {
+    return min + Math.floor(Math.random() * (max - min));
+};
+
+const playerLabels = ['one', 'two'];
+
+let player = playerLabels[random(1, 2) - 1];
 
 const init = () => {
     // adaugam board-ul in board-container
@@ -94,10 +101,6 @@ const setBoardDimensions = (cols, rows) => {
     });
 };
 
-const random = max => {
-    return Math.floor(Math.random() * max);
-};
-
 const shuffleArray = (cards, length) => {
     /*
         clonam array-ul cards primit ca parametru pentru a nu modifica array-ul images pe care il trimitem
@@ -110,7 +113,7 @@ const shuffleArray = (cards, length) => {
 
     for (let i = 0; i < length; i++) {
         // generam un nr aleator intre 0 si noOfCards
-        idx = random(noOfCards);
+        idx = random(0, noOfCards);
 
         // adaugam la noul array elementul cu index-ul idx
         newImages.push(imgs[idx]);
@@ -163,6 +166,10 @@ const setScore = () => {
     const scoreElement = $('.player.active .score');
     let score = parseInt(scoreElement.text());
     scoreElement.text(score + 1);
+
+    if (endOfGame()) {
+        showWinner();
+    }
 };
 
 const closePair = () => {
@@ -176,4 +183,29 @@ const selectPlayer = () => {
     $(`.player.${player}`).removeClass('active');
     player = player === 'one' ? 'two' : 'one';
     $(`.player.${player}`).addClass('active');
+};
+
+const endOfGame = () => $('.removed').length == $('.cards').length;
+
+const showWinner = () => {
+    const playerOneScore = parseInt($('.player.one .score').text());
+    const playerTwoScore = parseInt($('.player.two .score').text());
+
+    const winner =
+        playerOneScore == playerTwoScore
+            ? 'Draw!'
+            : playerOneScore > playerTwoScore ? 'Player 1' : 'Player 2';
+
+    const winnerHtml = `
+        <div class="winner">
+            <div class="message">${
+                winner == 'Draw!' ? winner : `${winner} has won!`
+            }</div>
+            <div class="reload">
+                <button onclick="location.href=location.href">Reload</button>
+            </div>
+        </div>
+    `;
+
+    $('.board-container').html(winnerHtml);
 };

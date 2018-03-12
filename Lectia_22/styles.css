@@ -111,3 +111,19 @@ h2 {
 .board .cards.removed {
     visibility: hidden;
 }
+
+.winner {
+    height: 75vh;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    grid-gap: 20px;
+}
+
+.winner .message {
+    font-family: 'Oswald';
+    font-size: 5vw;
+    color: #db0000;
+    text-shadow: 2px 2px 4px #fff;
+}
